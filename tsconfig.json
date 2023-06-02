@@ -26,6 +26,12 @@
       "@components/*": ["src/components/*"]
     }
   },
-  "include": ["src", "vite.config.ts", ".eslintrc.json"],
+  "include": [
+    "src",
+    "vite.config.ts",
+    ".eslintrc.json",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
