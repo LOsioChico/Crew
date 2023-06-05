@@ -3,7 +3,7 @@ export const Logo: React.FC = () => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 315 215'
-      className='svg-logo'
+      className='select-none'
       width='150'
       height='100'
       style={{
