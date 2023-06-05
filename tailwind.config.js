@@ -2,7 +2,13 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#252E56',
+        secondary: '#98D1E6',
+        secondaryDark: '#497DAE',
+      },
+    },
     screens: {
       sm: '640px',
       // => @media (min-width: 640px) { ... }
