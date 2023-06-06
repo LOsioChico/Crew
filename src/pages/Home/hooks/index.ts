@@ -1,1 +1,3 @@
-export * from './usePopularSplice'
+export * from './index';
+export * from './useMainSplide';
+export * from './usePopularSplide';
