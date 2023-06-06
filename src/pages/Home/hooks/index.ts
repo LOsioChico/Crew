@@ -1,1 +1,1 @@
-export * from './PopularSplide'
+export * from './usePopularSplice'
