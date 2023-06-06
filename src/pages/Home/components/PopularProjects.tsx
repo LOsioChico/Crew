@@ -1,15 +1,12 @@
-import { PopularSplide } from '@/utils'
 import '@splidejs/splide/css/skyblue'
-import { useEffect } from 'react'
+import { usePopularSplide } from '../hooks'
 
 export const PopularProjects: React.FC = () => {
-  useEffect(() => {
-    PopularSplide()
-  }, [])
+  usePopularSplide()
   return (
     <div className='flex flex-col items-center justify-center'>
       <p className='mb-4 text-2xl font-bold'>Popular Projects</p>
-      <div className='splide' role='group'>
+      <div className='splide' id='splide1' role='group'>
         <div className='splide__track'>
           <ul className='splide__list w-4/5'>
             <li className='splide__slide'>
