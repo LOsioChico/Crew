@@ -19,10 +19,8 @@ export const NavBar: React.FC = () => {
             <div className='absolute inset-y-0 left-0 flex  items-center pl-3'></div>
             <input
               type='search'
-              id='default-search'
-              className='w-full rounded-lg p-4 pl-4 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400'
+              className='w-full rounded-lg py-2 pl-3 text-sm outline-none duration-200 focus:ring-2 focus:ring-secondaryDark'
               placeholder='Buscar proyecto...'
-              required
             />
             <button type='submit' className=' px-1 py-1 text-sm  text-white '>
               <img src='src/assets/search.svg' className='h-5 cursor-pointer' />
