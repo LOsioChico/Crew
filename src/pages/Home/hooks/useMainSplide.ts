@@ -5,8 +5,8 @@ export const useMainSplide = (): void => {
   useEffect(() => {
     new Splide('#splide2', {
       type: 'loop',
-      perPage: 3,
-      width: '100%',
+      perPage: 1,
+      width: 'auto',
     }).mount()
   }, [])
 }
