@@ -1,5 +1,5 @@
-import { useMainSplide } from '../hooks'
 import '@splidejs/splide/css/skyblue'
+import { useMainSplide } from '../hooks'
 
 export const MainCarrousel: React.FC = () => {
   useMainSplide()
