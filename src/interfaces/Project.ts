@@ -2,6 +2,8 @@ import { type IComment } from '.'
 
 export interface IProject {
   id: string
+  mainImage: string
+  images: string[]
   title: string
   description: string
   fundingCurrent: number
