@@ -5,8 +5,10 @@ export const usePopularSplide = (): void => {
   useEffect(() => {
     new Splide('#splide1', {
       type: 'loop',
-      perPage: 3,
-      width: '77%',
+      perPage: 4,
+      width: '85%',
+      gap: '2rem',
+      height: '540px',
     }).mount()
   }, [])
 }
