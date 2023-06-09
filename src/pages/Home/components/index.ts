@@ -1,3 +1,3 @@
 export * from './MainCarrousel'
-export * from './PopularProjects'
+export * from './PopularCarrousel'
 export * from './TopCategories'

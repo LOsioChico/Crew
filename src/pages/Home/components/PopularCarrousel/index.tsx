@@ -1,7 +1,7 @@
 import '@splidejs/splide/css/skyblue'
-import { usePopularSplide } from '../hooks'
+import { usePopularSplide } from '../../hooks'
 
-export const PopularProjects: React.FC = () => {
+export const PopularCarrousel: React.FC = () => {
   usePopularSplide()
   return (
     <div className='flex flex-col items-center justify-center'>
