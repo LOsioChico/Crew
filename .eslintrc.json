@@ -28,6 +28,7 @@
   "plugins": ["react", "react-refresh"],
   "rules": {
     "react-refresh/only-export-components": "warn",
-    "@typescript-eslint/triple-slash-reference": "off"
+    "@typescript-eslint/triple-slash-reference": "off",
+    "react/prop-types": "off"
   }
 }
