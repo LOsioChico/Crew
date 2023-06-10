@@ -1,6 +1,6 @@
 import { projectExamples } from '@/data'
 import { usePopularSplide } from '../../hooks'
-import { ProjectItem } from './components'
+import { PopularProject } from './components'
 
 export const PopularCarrousel: React.FC = () => {
   usePopularSplide()
@@ -11,7 +11,7 @@ export const PopularCarrousel: React.FC = () => {
         <div className='splide__track h-[670px]'>
           <ul className='splide__list'>
             {projectExamples.map((project) => (
-              <ProjectItem key={project.id} project={project} />
+              <PopularProject key={project.id} project={project} />
             ))}
           </ul>
         </div>

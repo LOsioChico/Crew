@@ -1,1 +1,1 @@
-export * from './projectExamples'
+export * from './popularCarrouselExamples'

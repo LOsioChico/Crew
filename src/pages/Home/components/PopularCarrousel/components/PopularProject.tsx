@@ -1,11 +1,11 @@
 import { type PopularCarrouselProjects } from '@/data'
 import { numberToUSD } from '@/utils'
 
-interface ProjectItemProps {
+interface PopularProjectProps {
   project: PopularCarrouselProjects
 }
 
-export const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+export const PopularProject: React.FC<PopularProjectProps> = ({ project }) => {
   return (
     <li className='splide__slide py-8'>
       <div className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
