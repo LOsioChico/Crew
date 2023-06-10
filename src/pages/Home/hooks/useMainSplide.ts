@@ -3,10 +3,16 @@ import { useEffect } from 'react'
 
 export const useMainSplide = (): void => {
   useEffect(() => {
-    new Splide('#splide2', {
+    const splide2 = new Splide('#splide2', {
       type: 'loop',
       perPage: 1,
       width: 'auto',
-    }).mount()
+    })
+
+    splide2.mount()
+
+    return () => {
+      splide2.destroy()
+    }
   }, [])
 }

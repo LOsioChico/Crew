@@ -8,7 +8,7 @@ export const PopularCarrousel: React.FC = () => {
     <div className='flex h-full flex-col items-center justify-center py-12'>
       <p className='self-center text-3xl font-bold'>Popular Projects</p>
       <div className='splide w-full' id='splide1' role='group'>
-        <div className='splide__track h-[700px]'>
+        <div className='splide__track h-[670px]'>
           <ul className='splide__list'>
             {projectExamples.map((project) => (
               <ProjectItem key={project.id} project={project} />
