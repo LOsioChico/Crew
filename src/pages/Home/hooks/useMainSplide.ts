@@ -7,6 +7,11 @@ export const useMainSplide = (): void => {
       type: 'loop',
       perPage: 1,
       width: 'auto',
+      arrows: false,
+      pagination: false,
+      autoplay: true,
+      speed: 2000,
+      pauseOnHover: true,
     })
 
     splide2.mount()
