@@ -1,8 +1,8 @@
-import { type PopularCarrouselProjects } from '@/data'
+import { type PopularCarrouselProject } from '@/data'
 import { numberToUSD } from '@/utils'
 
 interface PopularProjectProps {
-  project: PopularCarrouselProjects
+  project: PopularCarrouselProject
 }
 
 export const PopularProject: React.FC<PopularProjectProps> = ({ project }) => {
