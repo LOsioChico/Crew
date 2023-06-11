@@ -5,6 +5,7 @@ export interface IProject {
   mainImage: string
   images: string[]
   title: string
+  shortDescription: string
   description: string
   fundingCurrent: number
   fundingGoal: number
