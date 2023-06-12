@@ -1,6 +1,8 @@
 import { Logo } from '@/assets/Logo'
+import { useAuthModal } from '@/store'
 
 export const NavBar: React.FC = () => {
+  const { openLoginModal } = useAuthModal()
   return (
     <header>
       <nav className='flex h-16 items-center justify-between bg-primary font-semibold text-white'>
@@ -20,7 +22,14 @@ export const NavBar: React.FC = () => {
           <div className='cursor-pointer border-r border-gray-500 pr-5'>
             Crear una Campaña
           </div>
-          <button>Iniciar Sesión</button>
+          <button
+            className='cursor-pointer'
+            onClick={() => {
+              openLoginModal()
+            }}
+          >
+            Iniciar Sesión
+          </button>
           <button>Registrarse</button>
         </div>
       </nav>
