@@ -1,31 +1,16 @@
-import { Link } from 'react-router-dom'
+import { FooterLink, FooterLinkSection } from '.'
 
 export const EntrepreneursSection: React.FC = () => {
   return (
-    <div>
-      <div className='text-gray-500'>ENTREPRENEURS</div>
-      <div>
-        <div className='mt-3 flex flex-col'>
-          <Link to='#' className='hover:underline'>
-            How It Works
-          </Link>
-          <Link to='#' className='hover:underline'>
-            Education Center
-          </Link>
-          <Link to='#' className='hover:underline'>
-            Experts Directory
-          </Link>
-          <Link to='#' className='hover:underline'>
-            Fees
-          </Link>
-          <Link to='#' className='hover:underline'>
-            Enterprise
-          </Link>
-          <Link to='#' className='hover:underline'>
-            China
-          </Link>
-        </div>
+    <FooterLinkSection section='Entrepreneurs'>
+      <div className='mt-3 flex flex-col'>
+        <FooterLink url='#'>How It Works</FooterLink>
+        <FooterLink url='#'>Education Center</FooterLink>
+        <FooterLink url='#'>Experts Directory</FooterLink>
+        <FooterLink url='#'>Fees</FooterLink>
+        <FooterLink url='#'>Enterprise</FooterLink>
+        <FooterLink url='#'>China</FooterLink>
       </div>
-    </div>
+    </FooterLinkSection>
   )
 }
