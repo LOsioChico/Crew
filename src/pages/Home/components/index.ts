@@ -1,3 +1,4 @@
 export * from './MainCarrousel/MainCarrousel'
 export * from './PopularCarrousel/PopularCarrousel'
-export * from './TopCategories'
+export * from './TopCategories/TopCategories'
+
