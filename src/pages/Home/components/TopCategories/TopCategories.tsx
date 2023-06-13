@@ -1,33 +1,91 @@
 import logo from '../../../../assets/favicon.png'
-
+import tecnologia from '../../../../assets/Iconos/chipUno.png'
+import dataScience from '../../../../assets/Iconos/science.png'
+import entretenimiento from '../../../../assets/Iconos/peliculas.png'
+import health from '../../../../assets/Iconos/corazon.png'
+import search from '../../../../assets/Iconos/search.png'
 export const TopCategories: React.FC = () => {
   return (
-    <div className='border-box m-auto flex h-auto w-3/4 flex-col items-center justify-around border border-black'>
-      <div className='flex w-full flex-row justify-evenly border border-red-600'>
-        <div className='flex h-full items-center justify-center border border-green-700'>
-          <div className='flex items-center'>
-            <img className='' src={logo} />
-          </div>
+    <div className=' m-auto mt-8  flex h-[250px] w-full flex-col items-center justify-around '>
+      <div className='mt-0 box-border flex h-[125px] w-full justify-center   '>
+        <div className='flex h-[125px] items-center justify-center '>
+          <img className='' src={logo} />
         </div>
-        <div className='flex w-3/4 flex-col items-center border border-green-700 p-5'>
-          <h2 className='text-xl font-bold'>Which categories interest you?</h2>
-          <h4 className='mt-3 text-center text-sm'>
-            Discover projects just for you and get great recommendations when
-            you select interestsssssssssssss.
+        <div className='flex  w-4/5 flex-col items-center justify-start  p-5'>
+          <h2 className='text-lg font-bold '>Which categories interest you?</h2>
+          <h4 className='text-center text-xs'>
+            projects just for you and get great recommendations when .
           </h4>
-          <div className='flex w-1/2 flex-row justify-evenly'>
-            <button className='mt-5 h-12 w-40 rounded-md bg-primary pl-2 pr-2 font-bold uppercase text-white duration-300 hover:bg-secondaryDark'>
-              Sign Up Now
+          <div className='mt-3 box-border flex w-1/2  justify-center gap-3   text-xs '>
+            <button className=' rounded-sm  border-secondaryDark bg-secondaryDark px-3 py-1 uppercase text-white '>
+              Sign Up
             </button>
-            <button className='mt-5 h-12 w-40 rounded-md bg-primary pl-2 pr-2 font-bold uppercase text-white duration-300 hover:bg-secondaryDark'>
-              Learn More
+
+            <button className='mr-0 rounded-sm border bg-white px-3 py-1 uppercase  text-black focus:bg-white focus:outline-none'>
+              Learn more
             </button>
           </div>
         </div>
       </div>
+      <div className='flex h-[125px] w-[100%]  flex-row justify-center'>
+        <div className='flex w-[100%] justify-center justify-items-stretch'>
+          <ul className='flex justify-between p-0'>
+            <li className='mx-4'>
+              <div className='flex flex-col items-center justify-center'>
+                <a href='#'>
+                  <img
+                    src={tecnologia}
+                    className=' ml-auto mr-auto h-12 w-12'
+                  ></img>
+                  <span className='text-sm'>Technology</span>
+                </a>
+              </div>
+            </li>
 
-      <div className='flex flex-row justify-center'>
-        <p>category</p>
+            <li className='mx-4'>
+              <div className='flex flex-col items-center justify-center '>
+                <a href='#'>
+                  <img src={dataScience} className=' ml-0 mr-0 h-12 w-12'></img>
+                  <span className='ml-2 mr-2 text-sm'>Science</span>
+                </a>
+              </div>
+            </li>
+
+            <li className='mx-4'>
+              <div className='flex flex-col items-center justify-center '>
+                <a href='#'>
+                  <img
+                    src={entretenimiento}
+                    className=' ml-auto mr-auto h-12 w-12'
+                  ></img>
+                  <span className='text-sm'>Entertainment</span>
+                </a>
+              </div>
+            </li>
+            <li className='mx-4'>
+              <div className='flex flex-col items-center justify-center'>
+                <a href='#'>
+                  <img
+                    src={health}
+                    className=' ml-auto mr-auto h-12 w-12'
+                  ></img>
+                  <span className='text-sm'>Healh & Wellness</span>
+                </a>
+              </div>
+            </li>
+            <li className='mx-4'>
+              <div className='flex flex-col  items-center justify-center'>
+                <a href='#'>
+                  <img
+                    src={search}
+                    className=' ml-auto mr-auto h-12 w-12'
+                  ></img>
+                  <span className='ml-2 text-sm'>More</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   )
