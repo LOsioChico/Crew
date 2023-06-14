@@ -1,9 +1,9 @@
 import { useAuthModal } from '@/store'
 
 export const Register: React.FC = () => {
-  const { closeAuthModal } = useAuthModal()
+  const { closeAuthModal, openLoginModal } = useAuthModal()
   return (
-    <main className='mt-48 w-full max-w-md rounded-lg bg-white p-6 shadow-lg'>
+    <main className='mt-40 w-full max-w-md rounded-lg bg-white p-6 shadow-lg'>
       <section className='flex justify-end'>
         <button
           className='right-0 top-0'
@@ -114,9 +114,14 @@ export const Register: React.FC = () => {
       </section>
       <p className='flex justify-center pt-5'>
         Already have an account?&nbsp;
-        <a href='#' className='font-bold underline'>
+        <p
+          className='cursor-pointer font-bold underline'
+          onClick={() => {
+            openLoginModal()
+          }}
+        >
           Log In
-        </a>
+        </p>
       </p>
     </main>
   )
