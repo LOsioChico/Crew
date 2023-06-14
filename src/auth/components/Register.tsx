@@ -34,11 +34,11 @@ export const Register: React.FC = () => {
         </div>
         <label htmlFor='Terms'>
           I agree to the{' '}
-          <span className='cursor-pointer font-bold underline duration-300 hover:text-secondaryDark'>
+          <span className='cursor-pointer font-bold duration-300 hover:text-secondaryDark'>
             Terms of Use
           </span>{' '}
           and have read and understand the{' '}
-          <span className='cursor-pointer font-bold underline duration-300 hover:text-secondaryDark'>
+          <span className='cursor-pointer font-bold duration-300 hover:text-secondaryDark'>
             Privacy Policy
           </span>
         </label>
@@ -50,7 +50,7 @@ export const Register: React.FC = () => {
       <p className='flex justify-center pt-1'>
         Already have an account?&nbsp;
         <span
-          className='cursor-pointer font-bold underline duration-300 hover:text-secondaryDark'
+          className='cursor-pointer font-bold duration-300 hover:text-secondaryDark'
           onClick={() => {
             openLoginModal()
           }}

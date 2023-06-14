@@ -34,7 +34,7 @@ export const Login: React.FC = () => {
       <div className='mb-2'>
         <a
           href='#'
-          className='flex justify-end text-sm underline duration-300 hover:text-secondaryDark'
+          className='flex justify-end text-sm duration-300 hover:text-secondaryDark'
         >
           Forgot your password?
         </a>
@@ -46,7 +46,7 @@ export const Login: React.FC = () => {
       <p className='flex justify-center'>
         New to Crew?&nbsp;
         <span
-          className='cursor-pointer font-bold underline
+          className='cursor-pointer font-bold
           duration-300 hover:text-secondaryDark
           '
           onClick={() => {
