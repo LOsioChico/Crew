@@ -1,6 +1,8 @@
 import { useState, type ChangeEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const SearchBar: React.FC = () => {
+  const navigate = useNavigate()
   const [ProjectName, setProjectName] = useState('')
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -14,10 +16,18 @@ export const SearchBar: React.FC = () => {
         value={ProjectName}
         onChange={handleInputChange}
         className='h-8 w-full rounded-md border-2 border-neutral-100 bg-neutral-100 pl-3 text-sm text-gray-600 outline-none duration-300 focus:border-secondaryDark'
+        placeholder='Search for a project'
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            navigate(`/search/${ProjectName}`)
+          }
+        }}
       />
       <button
-        type='submit'
         className='hover:bg-secondaryLight absolute right-0 flex h-8 items-center justify-center rounded-r-md bg-secondaryDark px-1 py-1 text-primary transition duration-300'
+        onClick={() => {
+          navigate(`/search/${ProjectName}`)
+        }}
       >
         <span className='material-symbols-outlined cursor-pointer'>search</span>
       </button>
