@@ -1,6 +1,6 @@
 import { type IProject } from '@/interfaces'
 
-export type PopularCarrouselProject = Pick<
+export type ProjectCardType = Pick<
   IProject,
   | 'id'
   | 'mainImage'
@@ -12,7 +12,7 @@ export type PopularCarrouselProject = Pick<
   | 'categories'
 >
 
-export const popularCarrouselProjects: PopularCarrouselProject[] = [
+export const ProjectCardsData: ProjectCardType[] = [
   {
     id: '1',
     mainImage: 'https://picsum.photos/500/400',

@@ -1,6 +1,6 @@
-import { popularCarrouselProjects } from '@/data'
-import { usePopularSplide } from '../../hooks'
-import { PopularCarrouselItem } from './components'
+import { ProjectCard } from '@/components'
+import { ProjectCardsData } from '@/data'
+import { usePopularSplide } from '../hooks'
 
 export const PopularCarrousel: React.FC = () => {
   usePopularSplide()
@@ -10,8 +10,8 @@ export const PopularCarrousel: React.FC = () => {
       <div className='splide w-full' id='splide1' role='group'>
         <div className='splide__track h-[670px]'>
           <ul className='splide__list'>
-            {popularCarrouselProjects.map((project) => (
-              <PopularCarrouselItem key={project.id} project={project} />
+            {ProjectCardsData.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </ul>
         </div>
