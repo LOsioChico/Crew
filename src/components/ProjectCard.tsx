@@ -11,7 +11,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
         <div className='h-1/2'>
           <img
-            className='h-full w-full rounded-t-2xl object-cover '
+            className='h-full w-full rounded-t-2xl object-cover'
             src={project.mainImage}
             alt={project.title}
           />

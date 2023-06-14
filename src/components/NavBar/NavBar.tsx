@@ -13,7 +13,7 @@ export const NavBar: React.FC = () => {
           <button className='relative pr-2'>
             Explorar
             <img
-              src='src/assets/angle-down.svg'
+              src='/src/assets/angle-down.svg'
               className='absolute -right-3 top-1 h-5'
             />
           </button>
