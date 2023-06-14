@@ -1,5 +1,5 @@
 import { useAuthModal } from '@/store'
-import { Login } from './components'
+import { Login, Register } from './components'
 
 export const Auth: React.FC = () => {
   const body = document.querySelector('body')
@@ -19,6 +19,7 @@ export const Auth: React.FC = () => {
         if (e.target === e.currentTarget) closeAuthModal()
       }}
     >
+      {state === 'register' && <Register />}
       {state === 'login' && <Login />}
     </div>
   )
