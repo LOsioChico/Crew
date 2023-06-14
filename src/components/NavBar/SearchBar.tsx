@@ -13,7 +13,7 @@ export const SearchBar: React.FC = () => {
         type='text'
         value={ProjectName}
         onChange={handleInputChange}
-        className='h-8 w-full rounded-md border-2 border-neutral-300 bg-neutral-300 pl-3 text-sm text-gray-600 outline-none duration-300 focus:border-secondaryDark'
+        className='h-8 w-full rounded-md border-2 border-neutral-100 bg-neutral-100 pl-3 text-sm text-gray-600 outline-none duration-300 focus:border-secondaryDark'
       />
       <button
         type='submit'
