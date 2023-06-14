@@ -28,7 +28,7 @@ export const Register: React.FC = () => {
       <AuthInput label='Email' type='email' placeholder='Your Email' />
       <AuthInput label='Password' type='password' placeholder='Your Password' />
 
-      <section className='flex pl-1 align-baseline text-sm'>
+      <section className='mt-6 flex pl-1 align-baseline text-sm'>
         <div>
           <input type='checkbox' className='mr-1 h-4 w-5' id='Terms' required />
         </div>
@@ -44,8 +44,8 @@ export const Register: React.FC = () => {
         </label>
       </section>
 
-      <button className='mb-2 mt-6 h-10 w-full rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white duration-300 hover:bg-secondaryDark'>
-        CREATE ACCOUNT
+      <button className='mb-2 mt-4 h-10 w-full rounded-md bg-primary px-4 py-2 text-sm font-semibold uppercase text-white duration-300 hover:bg-secondaryDark'>
+        Create Account
       </button>
       <p className='flex justify-center pt-1'>
         Already have an account?&nbsp;
