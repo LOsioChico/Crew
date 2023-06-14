@@ -1,11 +1,11 @@
-import { type PopularCarrouselProject } from '@/data'
+import { type ProjectCardType } from '@/data'
 import { numberToUSD } from '@/utils'
 
-interface PopularProjectProps {
-  project: PopularCarrouselProject
+interface ProjectCardProps {
+  project: ProjectCardType
 }
 
-export const PopularProject: React.FC<PopularProjectProps> = ({ project }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <li className='splide__slide py-8'>
       <div className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
