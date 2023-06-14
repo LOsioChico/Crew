@@ -1,7 +1,7 @@
 import { useAuthModal } from '@/store'
 
 export const Login: React.FC = () => {
-  const { closeAuthModal } = useAuthModal()
+  const { closeAuthModal, openRegisterModal } = useAuthModal()
   return (
     <div className='mt-48 w-full max-w-md rounded-lg bg-white p-6 shadow-lg'>
       <div className='flex justify-end'>
@@ -76,9 +76,14 @@ export const Login: React.FC = () => {
       </div>
       <p className='flex justify-center pt-5'>
         New to Crew?&nbsp;
-        <a href='#' className='font-bold underline'>
+        <p
+          className='cursor-pointer font-bold underline'
+          onClick={() => {
+            openRegisterModal()
+          }}
+        >
           Sign Up
-        </a>
+        </p>
       </p>
     </div>
   )
