@@ -1,5 +1,5 @@
 import { Footer, NavBar } from '@/components'
-import { Home } from '@/pages'
+import { Home, Projects } from '@/pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export const RouterProvider: React.FC = () => {
@@ -8,6 +8,7 @@ export const RouterProvider: React.FC = () => {
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/projects/:id' element={<Projects />} />
       </Routes>
       <Footer />
     </BrowserRouter>
