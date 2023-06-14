@@ -15,7 +15,9 @@ export const SearchBar: React.FC = () => {
         onChange={handleInputChange}
         className='h-8 w-full rounded-md border-2 pl-3 text-sm text-gray-600 outline-none duration-300 focus:border-secondaryDark'
       />
-      <button>Buscar</button>
+      <button type='submit' className=' px-1 py-1 text-sm  text-white '>
+        <img src='src/assets/search.svg' className='h-5 cursor-pointer' />
+      </button>
     </div>
   )
 }
