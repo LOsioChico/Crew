@@ -1,14 +1,21 @@
 import { type ProjectCardType } from '@/data'
 import { numberToUSD } from '@/utils'
+import { useNavigate } from 'react-router-dom'
 
 interface ProjectCardProps {
   project: ProjectCardType
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const navigate = useNavigate()
   return (
     <li className='splide__slide py-8'>
-      <div className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
+      <div
+        className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'
+        onClick={() => {
+          navigate(`/projects/${project.id}`)
+        }}
+      >
         <div className='h-1/2'>
           <img
             className='h-full w-full rounded-t-2xl object-cover'

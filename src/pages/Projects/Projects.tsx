@@ -99,20 +99,17 @@ export const Projects: React.FC = () => {
           </div>
           <div className='flex items-center justify-between'>
             <div className='flex gap-2'>
-              <button className='rounded-md bg-secondaryDark px-4 py-2 text-white'>
+              <button className='flex items-center justify-center rounded-md bg-secondaryDark px-4 py-2 text-white duration-150 ease-in-out hover:bg-primary active:scale-95'>
                 Fund this project
               </button>
-              <button className='flex items-center justify-center rounded-md bg-secondaryDark px-4 py-2 text-white'>
+              <button className='flex items-center justify-center rounded-md bg-secondaryDark px-4 py-2 text-white duration-150 ease-in-out hover:bg-primary active:scale-95'>
                 <span className='material-symbols-outlined mr-1 text-sm'>
                   favorite
                 </span>{' '}
                 Follow
               </button>
             </div>
-            <button
-              className='flex items-center justify-center rounded-md bg-secondaryDark
-                px-4 py-2 text-white'
-            >
+            <button className='flex items-center justify-center rounded-md bg-secondaryDark px-4 py-2 text-white duration-150 ease-in-out hover:bg-primary active:scale-95'>
               <span className='material-symbols-outlined mr-1 text-sm'>
                 share
               </span>{' '}
