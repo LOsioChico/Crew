@@ -1,17 +1,24 @@
 import { type ProjectCardType } from '@/data'
 import { numberToUSD } from '@/utils'
+import { useNavigate } from 'react-router-dom'
 
 interface ProjectCardProps {
   project: ProjectCardType
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const navigate = useNavigate()
   return (
     <li className='splide__slide py-8'>
-      <div className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
+      <div
+        className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'
+        onClick={() => {
+          navigate(`/projects/${project.id}`)
+        }}
+      >
         <div className='h-1/2'>
           <img
-            className='h-full w-full rounded-t-2xl object-cover '
+            className='h-full w-full rounded-t-2xl object-cover'
             src={project.mainImage}
             alt={project.title}
           />
@@ -36,14 +43,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </p>
           </div>
           <div className='my-2'>
-            {project.categories.map((category) => (
-              <span
-                key={category}
-                className='mr-2 mt-2 inline-block rounded-full bg-secondaryDark px-2 py-1 text-xs font-semibold text-white duration-300 hover:scale-110'
-              >
-                {category}
-              </span>
-            ))}
+            <span className='mr-2 mt-2 inline-block rounded-full bg-secondaryDark px-2 py-1 text-xs font-semibold text-white duration-300 hover:scale-110'>
+              {project.category}
+            </span>
           </div>
 
           <div>
