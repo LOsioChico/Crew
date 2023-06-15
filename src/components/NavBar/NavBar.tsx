@@ -1,5 +1,6 @@
 import { Logo } from '@/assets/Logo'
 import { SearchBar } from '.'
+import { Explorer } from '@/components/NavBar/Explorer'
 
 export const NavBar: React.FC = () => {
   return (
@@ -7,13 +8,7 @@ export const NavBar: React.FC = () => {
       <nav className='flex h-16 items-center justify-between bg-primary font-semibold text-white'>
         <div className='ml-8 flex items-center justify-center gap-5'>
           <Logo />
-          <button className='relative pr-2'>
-            Explorar
-            <img
-              src='src/assets/angle-down.svg'
-              className='absolute -right-3 top-1 h-5'
-            />
-          </button>
+          <Explorer />
         </div>
         <SearchBar />
         <div className='mr-8 flex items-center gap-5 '>
