@@ -1,4 +1,5 @@
 import { Logo } from '@/assets/Logo'
+import { Explorer } from '@/components/NavBar/Explorer'
 import { useAuthModal } from '@/store'
 import { useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
@@ -19,12 +20,7 @@ export const NavBar: React.FC = () => {
           >
             <Logo />
           </div>
-          <button className='relative pr-2 duration-300 hover:text-secondary'>
-            Explorar
-            <span className='material-symbols-outlined absolute -top-1 text-2xl'>
-              expand_more
-            </span>
-          </button>
+          <Explorer />
         </div>
         <SearchBar />
         <div className='mr-8 flex items-center gap-5 '>
