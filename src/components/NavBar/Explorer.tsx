@@ -10,21 +10,24 @@ export const Explorer: React.FC = () => {
   return (
     <>
       <button
-        className='ransition flex items-center  rounded-md p-2  duration-300 ease-in-out hover:scale-110 '
+        className='ransition flex items-center  rounded-md p-2  duration-300 ease-in-out hover:scale-105 hover:text-secondary'
         onClick={toggleModal}
       >
         Explorer
-        <span className='material-symbols-outlined ml-1 text-sm'>
+        <span
+          className={`material-symbols-outlined ml-1 text-sm duration-300 ease-in-out
+        ${isOpen ? 'rotate-180 transform' : ''}`}
+        >
           expand_more
         </span>
       </button>
 
       {isOpen && (
-        <div className='absolute top-0 z-10 ml-[300px] mt-16 flex h-[200px] w-[300px] rounded-b-xl bg-primary pl-12 pt-6'>
-          <ul>
-            <li className='mb-2 '>
+        <div className='absolute -top-4 left-40 z-10 mt-16 flex h-auto w-[240px] rounded-b-xl bg-primary pl-12 pt-6'>
+          <ul className='last:mb-4'>
+            <li className='mb-2'>
               <button
-                className='text-white duration-300 ease-in-out hover:scale-110'
+                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                 onClick={toggleModal}
               >
                 All Projects
@@ -32,7 +35,7 @@ export const Explorer: React.FC = () => {
             </li>
             <li className='mb-2'>
               <button
-                className='text-white duration-300 ease-in-out hover:scale-110'
+                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                 onClick={toggleModal}
               >
                 Tech & Innovation
@@ -40,7 +43,7 @@ export const Explorer: React.FC = () => {
             </li>
             <li className='mb-2'>
               <button
-                className='text-white duration-300 ease-in-out hover:scale-110'
+                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                 onClick={toggleModal}
               >
                 Creative Works
@@ -48,7 +51,7 @@ export const Explorer: React.FC = () => {
             </li>
             <li className='mb-2'>
               <button
-                className='text-white duration-300 ease-in-out hover:scale-110'
+                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                 onClick={toggleModal}
               >
                 Community Projects
