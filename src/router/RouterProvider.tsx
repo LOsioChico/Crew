@@ -1,5 +1,5 @@
 import { Footer, NavBar } from '@/components'
-import { Home, Projects } from '@/pages'
+import { Home, ProjectForm, Projects } from '@/pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export const RouterProvider: React.FC = () => {
@@ -9,6 +9,7 @@ export const RouterProvider: React.FC = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projects/:id' element={<Projects />} />
+        <Route path='/project-form' element={<ProjectForm />} />
       </Routes>
       <Footer />
     </BrowserRouter>
