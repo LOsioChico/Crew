@@ -9,7 +9,7 @@ export type ProjectCardType = Pick<
   | 'fundingCurrent'
   | 'fundingPercentage'
   | 'fundingDaysLeft'
-  | 'categories'
+  | 'category'
 >
 
 export const ProjectCardsData: ProjectCardType[] = [
@@ -22,7 +22,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 1000,
     fundingPercentage: 50,
     fundingDaysLeft: 30,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
   },
   {
     id: '2',
@@ -33,7 +33,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 654,
     fundingPercentage: 13,
     fundingDaysLeft: 30,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 10000,
     fundingPercentage: 100,
     fundingDaysLeft: 0,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
   },
   {
     id: '4',
@@ -55,7 +55,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 7854,
     fundingPercentage: 78,
     fundingDaysLeft: 30,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
   },
 ]
 
@@ -114,7 +114,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 1000,
     fundingPercentage: 50,
     fundingDaysLeft: 30,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',
@@ -142,7 +142,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 654,
     fundingPercentage: 13,
     fundingDaysLeft: 30,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',
@@ -170,7 +170,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 10000,
     fundingPercentage: 100,
     fundingDaysLeft: 0,
-    categories: ['category1', 'category2'],
+    category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',

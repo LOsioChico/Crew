@@ -43,14 +43,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </p>
           </div>
           <div className='my-2'>
-            {project.categories.map((category) => (
-              <span
-                key={category}
-                className='mr-2 mt-2 inline-block rounded-full bg-secondaryDark px-2 py-1 text-xs font-semibold text-white duration-300 hover:scale-110'
-              >
-                {category}
-              </span>
-            ))}
+            <span className='mr-2 mt-2 inline-block rounded-full bg-secondaryDark px-2 py-1 text-xs font-semibold text-white duration-300 hover:scale-110'>
+              {project.category}
+            </span>
           </div>
 
           <div>
