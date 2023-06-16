@@ -1,15 +1,14 @@
-import { useAuthModal } from '@/store'
+import { type LoginProps } from '@/interfaces/AuthModalProps'
 import { AuthInput } from '.'
 
-export const Login: React.FC = () => {
-  const { closeAuthModal, openRegisterModal } = useAuthModal()
+export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
   return (
     <div className='mt-48 w-full max-w-sm rounded-lg bg-white p-6 shadow-lg'>
       <div className='flex justify-end'>
         <button
           className='right-0 top-0 text-xl duration-300 hover:text-red-700'
           onClick={() => {
-            closeAuthModal()
+            setModalAuth('closed')
           }}
         >
           X
@@ -50,7 +49,7 @@ export const Login: React.FC = () => {
           duration-300 hover:text-secondaryDark
           '
           onClick={() => {
-            openRegisterModal()
+            setModalAuth('register')
           }}
         >
           Sign Up
