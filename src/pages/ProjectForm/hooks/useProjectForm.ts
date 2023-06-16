@@ -1,3 +1,4 @@
+import { CrewApi } from '@/api'
 import {
   ProjectValidation,
   type ProjectFormType,
@@ -16,8 +17,8 @@ export const useProjectForm = (): IProjectForm => {
     resolver: zodResolver(ProjectValidation),
   })
 
-  const onSubmit = (data: ProjectFormType): void => {
-    console.log(data)
+  const onSubmit = async (data: ProjectFormType): Promise<void> => {
+    void CrewApi.post('/projectRoute', data)
   }
 
   return {
