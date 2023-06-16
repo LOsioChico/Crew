@@ -7,7 +7,10 @@ interface FooterLinkProps {
 
 export const FooterLink: React.FC<FooterLinkProps> = ({ url, children }) => {
   return (
-    <Link to={url} className='hover:underline'>
+    <Link
+      to={url}
+      className='cursor-pointer duration-150 hover:text-secondaryDark'
+    >
       {children}
     </Link>
   )
