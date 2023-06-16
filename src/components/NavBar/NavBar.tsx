@@ -1,4 +1,5 @@
 import { Logo } from '@/assets/Logo'
+import { Auth } from '@/auth'
 import { Explorer } from '@/components/NavBar/Explorer'
 import { useAuthModal } from '@/store'
 import { useNavigate } from 'react-router-dom'
@@ -45,6 +46,7 @@ export const NavBar: React.FC = () => {
           </button>
         </div>
       </nav>
+      <Auth />
     </header>
   )
 }
