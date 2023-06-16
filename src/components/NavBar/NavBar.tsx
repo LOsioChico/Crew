@@ -1,13 +1,14 @@
 import { Logo } from '@/assets/Logo'
 import { Auth } from '@/auth'
 import { Explorer } from '@/components/NavBar/Explorer'
-import { useAuthModal } from '@/store'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
 
 export const NavBar: React.FC = () => {
-  const { openLoginModal } = useAuthModal()
-  const { openRegisterModal } = useAuthModal()
+  const [modalAuth, setModalAuth] = useState<'closed' | 'login' | 'register'>(
+    'closed'
+  )
   const navigate = useNavigate()
   return (
     <header>
@@ -36,7 +37,7 @@ export const NavBar: React.FC = () => {
           <button
             className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary active:scale-95'
             onClick={() => {
-              openLoginModal()
+              setModalAuth('login')
             }}
           >
             Iniciar Sesión
@@ -44,14 +45,14 @@ export const NavBar: React.FC = () => {
           <button
             className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary active:scale-95'
             onClick={() => {
-              openRegisterModal()
+              setModalAuth('register')
             }}
           >
             Registrarse
           </button>
         </div>
       </nav>
-      <Auth />
+      <Auth modalAuth={modalAuth} setModalAuth={setModalAuth} />
     </header>
   )
 }
