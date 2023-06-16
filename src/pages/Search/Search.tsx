@@ -1,27 +1,18 @@
 import {
-  useState,
   useEffect,
+  useState,
   type ChangeEvent,
   type MouseEventHandler,
 } from 'react'
 
+interface ShowState {
+  search: string
+  category: string
+  sort: string
+}
+
 export const Search: React.FC = () => {
-  interface ShowState {
-    search: string
-    category: string
-    sort: string
-  }
-
   const [ProjectName, setProjectName] = useState('')
-
-  const handleCategoryFilter: MouseEventHandler<HTMLButtonElement> = (
-    event
-  ) => {
-    setShowState((state) => ({
-      ...state,
-      category: event.target.name,
-    }))
-  }
 
   const [showState, setShowState] = useState<ShowState>({
     search: '',
@@ -29,13 +20,19 @@ export const Search: React.FC = () => {
     sort: 'Trending',
   })
 
-  useEffect(() => {
-    console.log(showState) // Peticion a la API
-  }, [showState])
-
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.target.value
     setProjectName(value)
+  }
+
+  const handleCategoryFilter: MouseEventHandler<HTMLButtonElement> = (
+    event
+  ) => {
+    console.log(event.currentTarget.name)
+    setShowState((state) => ({
+      ...state,
+      category: event.currentTarget?.name,
+    }))
   }
 
   const handleOnChange1 = (event: ChangeEvent<HTMLSelectElement>): void => {
@@ -45,6 +42,10 @@ export const Search: React.FC = () => {
       sort: value,
     }))
   }
+
+  useEffect(() => {
+    console.log(showState) // Peticion a la API
+  }, [showState])
 
   return (
     <div className='flex flex-row'>
