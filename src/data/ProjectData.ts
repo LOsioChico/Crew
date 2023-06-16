@@ -8,7 +8,7 @@ export type ProjectCardType = Pick<
   | 'description'
   | 'fundingCurrent'
   | 'fundingPercentage'
-  | 'fundingDaysLeft'
+  | 'fundingDayLeft'
   | 'category'
 >
 
@@ -21,7 +21,7 @@ export const ProjectCardsData: ProjectCardType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 1000,
     fundingPercentage: 50,
-    fundingDaysLeft: 30,
+    fundingDayLeft: 30,
     category: 'Tecnologia e innovación',
   },
   {
@@ -32,7 +32,7 @@ export const ProjectCardsData: ProjectCardType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 654,
     fundingPercentage: 13,
-    fundingDaysLeft: 30,
+    fundingDayLeft: 30,
     category: 'Tecnologia e innovación',
   },
   {
@@ -43,7 +43,7 @@ export const ProjectCardsData: ProjectCardType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 10000,
     fundingPercentage: 100,
-    fundingDaysLeft: 0,
+    fundingDayLeft: 0,
     category: 'Tecnologia e innovación',
   },
   {
@@ -54,7 +54,7 @@ export const ProjectCardsData: ProjectCardType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 7854,
     fundingPercentage: 78,
-    fundingDaysLeft: 30,
+    fundingDayLeft: 30,
     category: 'Tecnologia e innovación',
   },
 ]
@@ -113,7 +113,7 @@ export const projectsDetail: IProject[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 1000,
     fundingPercentage: 50,
-    fundingDaysLeft: 30,
+    fundingDayLeft: 30,
     category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
@@ -141,7 +141,7 @@ export const projectsDetail: IProject[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 654,
     fundingPercentage: 13,
-    fundingDaysLeft: 30,
+    fundingDayLeft: 30,
     category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
@@ -169,7 +169,7 @@ export const projectsDetail: IProject[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Nulla euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.',
     fundingCurrent: 10000,
     fundingPercentage: 100,
-    fundingDaysLeft: 0,
+    fundingDayLeft: 0,
     category: 'Tecnologia e innovación',
     images: [
       'https://picsum.photos/500/400',
@@ -187,4 +187,11 @@ export const projectsDetail: IProject[] = [
     },
     updates: [],
   },
+]
+
+export const images: string[] = [
+  'https://picsum.photos/500/400',
+  'https://picsum.photos/400/500',
+  'https://picsum.photos/500/500',
+  'https://picsum.photos/500/600',
 ]
