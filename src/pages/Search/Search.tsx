@@ -1,109 +1,48 @@
-import {
-  useEffect,
-  useState,
-  type ChangeEvent,
-  type MouseEventHandler,
-} from 'react'
-
-interface ShowState {
-  search: string
-  category: string
-  sort: string
-}
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { CategoriesContainer } from './components/CategoriesContainer'
+import { useSearch } from './hooks'
+import { type ShowState } from './interface'
+import { URLParams } from './utils'
+import { handleSortSelect } from './utils/filtersHandler'
 
 export const Search: React.FC = () => {
-  const [ProjectName, setProjectName] = useState('')
-
+  const [search, setSearch] = useState<string>('')
   const [showState, setShowState] = useState<ShowState>({
-    search: '',
-    category: 'All Proyects',
+    category: 'All Projects',
     sort: 'Trending',
   })
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const value = event.target.value
-    setProjectName(value)
-  }
-
-  const handleCategoryFilter: MouseEventHandler<HTMLButtonElement> = (
-    event
-  ) => {
-    console.log(event.currentTarget.name)
-    setShowState((state) => ({
-      ...state,
-      category: event.currentTarget?.name,
-    }))
-  }
-
-  const handleOnChange1 = (event: ChangeEvent<HTMLSelectElement>): void => {
-    const value = event.target.value
-    setShowState((prevState) => ({
-      ...prevState,
-      sort: value,
-    }))
-  }
+  const navigate = useNavigate()
+  const params = URLParams({ search, showState })
+  useSearch({ params })
 
   useEffect(() => {
-    console.log(showState) // Peticion a la API
-  }, [showState])
+    navigate('/search?' + params.toString())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate])
 
   return (
     <div className='flex flex-row'>
-      <aside>
-        <div className='mt-16 flex h-auto w-[240px] rounded-b-xl bg-primary pl-12 pt-6'>
-          <ul className='last:mb-4'>
-            <li>
-              <h2 className='mb-2 font-bold text-white'> Categorías:</h2>
-              <hr />
-            </li>
-            <li className='mb-2'>
-              <button
-                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                onClick={handleCategoryFilter}
-                name='All Projects'
-              >
-                All Projects
-              </button>
-            </li>
-            <li className='mb-2'>
-              <button
-                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                onClick={handleCategoryFilter}
-                name='Tech & Innovation'
-              >
-                Tech & Innovation
-              </button>
-            </li>
-            <li className='mb-2'>
-              <button
-                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                onClick={handleCategoryFilter}
-                name='Creative Works'
-              >
-                Creative Works
-              </button>
-            </li>
-            <li className='mb-2'>
-              <button
-                className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                onClick={handleCategoryFilter}
-                name='Community Projects'
-              >
-                Community Projects
-              </button>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
+      <CategoriesContainer setShowState={setShowState} />
       <div className='block w-full items-center justify-center border border-black'>
         <div className='flex items-center justify-center'>
           <input
             type='text'
-            value={ProjectName}
-            onChange={handleInputChange}
+            name='search'
             className='h-8 w-full rounded-md border-2 border-neutral-100 bg-neutral-100 pl-3 text-sm text-gray-600 outline-none duration-300 focus:border-secondaryDark'
             placeholder='Search for a project'
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value)
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                setShowState((prevState) => ({
+                  ...prevState,
+                  search,
+                }))
+              }
+            }}
           />
           <button
             name='search'
@@ -111,7 +50,7 @@ export const Search: React.FC = () => {
             onClick={() => {
               setShowState((prevState) => ({
                 ...prevState,
-                search: ProjectName,
+                search,
               }))
             }}
           >
@@ -124,7 +63,9 @@ export const Search: React.FC = () => {
         <select
           className='broder-2 border-black'
           name='order'
-          onChange={handleOnChange1}
+          onChange={(event) => {
+            handleSortSelect({ event, setShowState })
+          }}
           defaultValue='Trending'
         >
           <option value='' disabled>
@@ -133,7 +74,7 @@ export const Search: React.FC = () => {
           <option value='Trending'>Trending</option>
           <option value='Most Founded'>Most Founded</option>
         </select>
-        <div> Container</div>
+        <div>Container</div>
       </div>
     </div>
   )
