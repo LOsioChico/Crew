@@ -6,9 +6,9 @@ type Category =
   | 'Proyectos Comunitarios'
 
 export interface IProject {
-  id: string
-  mainImage: string
-  images: string[]
+  id: number
+  mainImage: string // nel
+  images: string[] // nel
   title: string
   shortDescription: string
   description: string
@@ -16,8 +16,8 @@ export interface IProject {
   fundingGoal: number
   fundingGoalReached: boolean
   fundingPercentage: number
-  fundingDaysLeft: number
-  updates: IUpdate[]
+  fundingDayLeft: number
+  updates?: IUpdate[]
   category: Category
   creator: ICreator
 }
