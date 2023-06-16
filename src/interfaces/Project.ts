@@ -1,5 +1,10 @@
 import { type IComment } from '.'
 
+type Category =
+  | 'Tecnologia e innovación'
+  | 'Trabajos Creativos'
+  | 'Proyectos Comunitarios'
+
 export interface IProject {
   id: string
   mainImage: string
@@ -13,7 +18,7 @@ export interface IProject {
   fundingPercentage: number
   fundingDaysLeft: number
   updates: IUpdate[]
-  categories: string[]
+  category: Category
   creator: ICreator
 }
 
