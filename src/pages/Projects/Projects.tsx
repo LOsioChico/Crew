@@ -1,4 +1,4 @@
-import { useProjects } from '@/store'
+import { useProjects } from '@/hooks'
 import { numberToUSD } from '@/utils'
 import { useParams } from 'react-router-dom'
 import { useProjectSplide } from './hooks/useProjectSplide'
@@ -8,7 +8,7 @@ export const Projects: React.FC = () => {
   useProjectSplide()
   const { projects } = useProjects()
 
-  const projectDetail = projects.find((project) => {
+  const projectDetail = projects?.find((project) => {
     if (id === undefined) return false
     return project.id === +id
   })
@@ -29,7 +29,7 @@ export const Projects: React.FC = () => {
         <div className='splide' id='projectSplide' role='group'>
           <div className='splide__track'>
             <ul className='splide__list'>
-              {projectDetail.images?.map((image) => (
+              {projectDetail?.images?.map((image) => (
                 <li
                   className='splide__slide flex items-center justify-center'
                   key={image}
