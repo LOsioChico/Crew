@@ -1,4 +1,4 @@
-import { projectsDetail } from '@/data'
+import { useProjects } from '@/hooks'
 import { numberToUSD } from '@/utils'
 import { useParams } from 'react-router-dom'
 import { useProjectSplide } from './hooks/useProjectSplide'
@@ -6,11 +6,21 @@ import { useProjectSplide } from './hooks/useProjectSplide'
 export const Projects: React.FC = () => {
   const { id } = useParams<{ id: string }>()
   useProjectSplide()
+  const { projects } = useProjects()
 
-  const projectDetail = projectsDetail.find((project) => project.id === id)
+  const projectDetail = projects?.find((project) => {
+    if (id === undefined) return false
+    return project.id === +id
+  })
 
-  if (projectDetail == null) {
-    return <div>Project not found</div>
+  if (projectDetail === undefined) {
+    return (
+      <div className='splide' id='projectSplide' role='group'>
+        <div className='splide__track'>
+          <ul className='splide__list'></ul>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -19,7 +29,7 @@ export const Projects: React.FC = () => {
         <div className='splide' id='projectSplide' role='group'>
           <div className='splide__track'>
             <ul className='splide__list'>
-              {projectDetail.images?.map((image) => (
+              {projectDetail?.images?.map((image) => (
                 <li
                   className='splide__slide flex items-center justify-center'
                   key={image}
@@ -43,9 +53,10 @@ export const Projects: React.FC = () => {
         >
           <p className='font-bold uppercase text-secondaryDark'>Funding</p>
           <h2 className='text-4xl font-bold'>
-            {projectDetail.title}: <span>{projectDetail.shortDescription}</span>
+            {projectDetail.title}:{' '}
+            <span>{projectDetail.shortDescription.slice(0, 20)}</span>
           </h2>
-          <p className='text-xl'>{projectDetail.description}</p>
+          <p className='text-xl'>{projectDetail.description.slice(0, 500)}</p>
           <div className='my-2 flex items-center'>
             <div className='flex items-center'>
               <img
@@ -92,8 +103,8 @@ export const Projects: React.FC = () => {
                 {numberToUSD(projectDetail.fundingGoal)} goal
               </p>
               <p className='text-sm font-semibold uppercase text-gray-500'>
-                {projectDetail.fundingDaysLeft} days left to go{' '}
-                {projectDetail.fundingDaysLeft === 0 && '🎉'}
+                {projectDetail.fundingDayLeft} days left to go{' '}
+                {projectDetail.fundingDayLeft === 0 && '🎉'}
               </p>
             </div>
           </div>

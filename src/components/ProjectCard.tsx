@@ -9,9 +9,9 @@ interface ProjectCardProps {
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const navigate = useNavigate()
   return (
-    <li className='splide__slide py-8'>
+    <li className='h-[650px] w-1/4 py-8'>
       <div
-        className='group absolute flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'
+        className='group flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'
         onClick={() => {
           navigate(`/projects/${project.id}`)
         }}
@@ -76,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <div className='flex items-center justify-end'>
               <div className='flex items-center justify-center'>
                 <span className='text-lg font-semibold uppercase'>
-                  {project.fundingDaysLeft}
+                  {project.fundingDayLeft}
                 </span>
                 <p className='ml-1 text-xs font-semibold uppercase text-gray-500'>
                   Days left

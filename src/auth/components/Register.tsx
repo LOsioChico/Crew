@@ -1,15 +1,14 @@
-import { useAuthModal } from '@/store'
+import { type RegisterProps } from '@/interfaces'
 import { AuthInput } from '.'
 
-export const Register: React.FC = () => {
-  const { closeAuthModal, openLoginModal } = useAuthModal()
+export const Register: React.FC<RegisterProps> = ({ setModalAuth }) => {
   return (
     <main className='mt-40 w-full max-w-sm rounded-lg bg-white p-6 shadow-lg'>
       <section className='flex justify-end'>
         <button
           className='right-0 top-0 text-xl duration-300 hover:text-red-700'
           onClick={() => {
-            closeAuthModal()
+            setModalAuth('closed')
           }}
         >
           X
@@ -52,7 +51,7 @@ export const Register: React.FC = () => {
         <span
           className='cursor-pointer font-bold duration-300 hover:text-secondaryDark'
           onClick={() => {
-            openLoginModal()
+            setModalAuth('login')
           }}
         >
           Log In
