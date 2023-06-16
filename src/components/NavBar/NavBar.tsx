@@ -2,7 +2,7 @@ import { Logo } from '@/assets/Logo'
 import { Auth } from '@/auth'
 import { Explorer } from '@/components/NavBar/Explorer'
 import { useAuthModal } from '@/store'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
 
 export const NavBar: React.FC = () => {
@@ -26,12 +26,15 @@ export const NavBar: React.FC = () => {
         <SearchBar />
         <div className='mr-8 flex items-center gap-5 '>
           <div className='border-r border-gray-400'>
-            <div className='cursor-pointer select-none pr-5 duration-300 hover:scale-105 hover:text-secondary active:scale-95'>
+            <Link
+              className='cursor-pointer select-none pr-5 duration-300 hover:scale-105 hover:text-secondary active:scale-95'
+              to='/project-form'
+            >
               Crear una Campaña
-            </div>
+            </Link>
           </div>
           <button
-            className='cursor-pointer duration-300 select-none hover:scale-105 hover:text-secondary active:scale-95'
+            className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary active:scale-95'
             onClick={() => {
               openLoginModal()
             }}
