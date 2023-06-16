@@ -26,12 +26,12 @@ export const NavBar: React.FC = () => {
         <SearchBar />
         <div className='mr-8 flex items-center gap-5 '>
           <div className='border-r border-gray-400'>
-            <div className='cursor-pointer pr-5 duration-300 hover:scale-105 hover:text-secondary active:scale-95'>
+            <div className='cursor-pointer select-none pr-5 duration-300 hover:scale-105 hover:text-secondary active:scale-95'>
               Crear una Campaña
             </div>
           </div>
           <button
-            className='cursor-pointer duration-300 hover:scale-105 hover:text-secondary active:scale-95'
+            className='cursor-pointer duration-300 select-none hover:scale-105 hover:text-secondary active:scale-95'
             onClick={() => {
               openLoginModal()
             }}
@@ -39,7 +39,7 @@ export const NavBar: React.FC = () => {
             Iniciar Sesión
           </button>
           <button
-            className='cursor-pointer duration-300 hover:scale-105 hover:text-secondary active:scale-95'
+            className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary active:scale-95'
             onClick={() => {
               openRegisterModal()
             }}
