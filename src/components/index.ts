@@ -1,3 +1,5 @@
 export * from './Footer/Footer'
-export * from './NavBar/NavBar'
+export * from './Footer/components'
+export * from './NavBar'
 export * from './ProjectCard'
+export * from './QueryProvider'
