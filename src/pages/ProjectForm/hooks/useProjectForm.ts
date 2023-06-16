@@ -18,7 +18,11 @@ export const useProjectForm = (): IProjectForm => {
   })
 
   const onSubmit = async (data: ProjectFormType): Promise<void> => {
-    void CrewApi.post('/projectRoute', data)
+    try {
+      void CrewApi.post('/projectRoute', data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return {
