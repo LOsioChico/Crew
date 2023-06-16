@@ -1,29 +1,54 @@
 import { Logo } from '@/assets/Logo'
+import { Auth } from '@/auth'
+import { Explorer } from '@/components/NavBar/Explorer'
+import { useAuthModal } from '@/store'
+import { useNavigate } from 'react-router-dom'
+import { SearchBar } from '.'
 
 export const NavBar: React.FC = () => {
+  const { openLoginModal } = useAuthModal()
+  const { openRegisterModal } = useAuthModal()
+  const navigate = useNavigate()
   return (
     <header>
       <nav className='flex h-16 items-center justify-between bg-primary font-semibold text-white'>
         <div className='ml-8 flex items-center justify-center gap-5'>
-          <Logo />
-          <button className='relative pr-2'>
-            Explorar
-            <img
-              src='src/assets/angle-down.svg'
-              className='absolute -right-3 top-1 h-5'
-            />
-          </button>
-          <button>Nuestro top 10</button>
-          <img src='src/assets/search.svg' className='h-5 cursor-pointer' />
-        </div>
-        <div className='mr-8 flex items-center gap-5 '>
-          <div className='cursor-pointer border-r border-gray-500 pr-5'>
-            Crear una Campaña
+          <div
+            className='cursor-pointer duration-300'
+            onClick={() => {
+              navigate('/')
+            }}
+          >
+            <Logo />
           </div>
-          <button>Iniciar Sesión</button>
-          <button>Registrarse</button>
+          <Explorer />
+        </div>
+        <SearchBar />
+        <div className='mr-8 flex items-center gap-5 '>
+          <div className='border-r border-gray-400'>
+            <div className='cursor-pointer select-none pr-5 duration-300 hover:scale-105 hover:text-secondary active:scale-95'>
+              Crear una Campaña
+            </div>
+          </div>
+          <button
+            className='cursor-pointer duration-300 select-none hover:scale-105 hover:text-secondary active:scale-95'
+            onClick={() => {
+              openLoginModal()
+            }}
+          >
+            Iniciar Sesión
+          </button>
+          <button
+            className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary active:scale-95'
+            onClick={() => {
+              openRegisterModal()
+            }}
+          >
+            Registrarse
+          </button>
         </div>
       </nav>
+      <Auth />
     </header>
   )
 }

@@ -18,11 +18,11 @@ export const EmailSection: React.FC = () => {
         <input type='checkbox' className='mr-3 h-9 w-9' id='agree' />
         <label htmlFor='agree'>
           I agree to the{' '}
-          <span className='cursor-pointer underline hover:text-secondaryDark'>
+          <span className='cursor-pointer font-semibold duration-150 hover:text-secondaryDark'>
             Terms of Use
           </span>{' '}
           and have read and understand the{' '}
-          <span className='cursor-pointer underline hover:text-secondaryDark'>
+          <span className='cursor-pointer font-semibold duration-150 hover:text-secondaryDark'>
             Privacy Policy
           </span>
         </label>
