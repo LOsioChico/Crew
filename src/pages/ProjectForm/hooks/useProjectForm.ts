@@ -3,6 +3,7 @@ import {
   ProjectValidation,
   type ProjectFormType,
 } from '@/schemas/ProjectValidation'
+import { supabase } from '@/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { type IProjectForm } from '../interface/projectForm'
@@ -19,7 +20,10 @@ export const useProjectForm = (): IProjectForm => {
 
   const onSubmit = async (data: ProjectFormType): Promise<void> => {
     try {
-      void CrewApi.post('/projectRoute', data)
+      void CrewApi.post('/projectRoute', {
+        ...data,
+        creatorId: (await supabase.auth.getUser()).data.user?.id,
+      })
     } catch (error) {
       console.log(error)
     }

@@ -20,13 +20,13 @@ export const ProjectInputSelect: React.FC<ProjectInputSelectProps> = ({
 }) => {
   return (
     <div className='mb-4'>
-      <label htmlFor={name} className='mb-1 block font-bold'>
+      <label htmlFor={name} className='mb-1 block pl-1 font-bold text-gray-500'>
         {label}:
       </label>
       <select
         {...register(name, { required: true })}
         id={name}
-        className='w-full rounded border p-2'
+        className='h-10 w-full rounded-md border-2 pl-3 outline-none focus:border-secondaryDark'
       >
         <option value=''>{defaultOption}</option>
         {options.map((option) => (
@@ -37,7 +37,7 @@ export const ProjectInputSelect: React.FC<ProjectInputSelectProps> = ({
       </select>
 
       {errors.location != null && (
-        <span className='pl-1 text-sm text-red-700'>
+        <span className='pl-1 text-sm text-red-600'>
           Este campo es requerido
         </span>
       )}

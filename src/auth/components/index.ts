@@ -1,3 +1,5 @@
-export * from './AuthInput'
+export * from './AuthLoginInput'
+export * from './AuthRegisterInput'
 export * from './Login'
 export * from './Register'
+export * from './index'

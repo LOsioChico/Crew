@@ -5,10 +5,10 @@ export const ProjectForm: React.FC = () => {
   const { register, handleSubmit, errors, onSubmit } = useProjectForm()
 
   return (
-    <div className='container mx-auto mt-10 px-4'>
+    <div className='container mx-auto my-10 px-4'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='mx-auto max-w-md rounded border bg-neutral-300 p-4'
+        className='mx-auto max-w-md rounded border bg-gray-50 p-4'
       >
         <ProjectInput
           name='title'

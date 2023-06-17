@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
     "@splidejs/splide": "^4.1.4",
+    "@supabase/supabase-js": "^2.25.0",
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@tanstack/react-query": "^4.29.14",
     "@tanstack/react-query-devtools": "^4.29.14",

@@ -1,13 +1,24 @@
-interface AuthInputProps {
+import { type FieldError, type UseFormRegister } from 'react-hook-form'
+
+interface AuthLoginInputProps {
   label: string
+  name: 'email' | 'password'
   type: string
   placeholder: string
+  error: FieldError | undefined
+  register: UseFormRegister<{
+    email: string
+    password: string
+  }>
 }
 
-export const AuthInput: React.FC<AuthInputProps> = ({
+export const AuthLoginInput: React.FC<AuthLoginInputProps> = ({
   label,
   type,
   placeholder,
+  register,
+  name,
+  error,
 }) => {
   return (
     <div className='mb-2 last:mb-0'>
@@ -20,10 +31,15 @@ export const AuthInput: React.FC<AuthInputProps> = ({
       <input
         id={label}
         type={type}
-        name={label}
         className='duration-30 h-10 w-full rounded-md border-2 pl-3 text-sm outline-none focus:border-secondaryDark'
         placeholder={placeholder}
+        {...register(name)}
       />
+      {error != null && (
+        <p className='ml-1 text-sm font-semibold text-red-600'>
+          {error.message}
+        </p>
+      )}
     </div>
   )
 }
