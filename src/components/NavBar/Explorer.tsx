@@ -10,7 +10,7 @@ export const Explorer: React.FC = () => {
   return (
     <>
       <button
-        className='flex select-none items-center  rounded-md p-2 duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
+        className='flex select-none items-center  rounded-md p-2 duration-300 ease-in-out hover:text-secondary active:scale-95'
         onClick={toggleModal}
       >
         Explorer
