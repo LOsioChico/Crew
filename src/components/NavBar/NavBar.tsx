@@ -1,36 +1,14 @@
 import { Logo } from '@/assets/Logo'
 import { Auth } from '@/auth'
+import { useAuthHandler } from '@/auth/hooks'
 import { Explorer } from '@/components/NavBar/Explorer'
 import { supabase } from '@/utils'
-import { type Session } from '@supabase/supabase-js'
-import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
 
 export const NavBar: React.FC = () => {
-  const [modalAuth, setModalAuth] = useState<'closed' | 'login' | 'register'>(
-    'closed'
-  )
-  const [session, setSession] = useState<Session | null | 'si'>(null)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    void supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session)
-    })
-  }, [])
-
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_IN') {
-        setSession('si')
-        setModalAuth('closed')
-      }
-      if (event === 'SIGNED_OUT') {
-        setSession(null)
-      }
-    })
-  }, [setModalAuth])
+  const { session, modalAuth, setModalAuth } = useAuthHandler()
 
   return (
     <header>
@@ -56,7 +34,7 @@ export const NavBar: React.FC = () => {
               Crear una Campaña
             </Link>
           </div>
-          {session === null && (
+          {!session && (
             <>
               <button
                 className='cursor-pointer select-none duration-300 hover:text-secondary active:scale-95'
@@ -78,7 +56,7 @@ export const NavBar: React.FC = () => {
             </>
           )}
 
-          {session !== null && (
+          {session && (
             <button
               className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary'
               onClick={() => {
