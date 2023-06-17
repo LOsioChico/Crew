@@ -1,3 +1,4 @@
+import { CrewApi } from '@/api'
 import { type IRegisterForm } from '@/interfaces/registerForm'
 import {
   RegisterValidation,
@@ -42,6 +43,13 @@ export const useRegisterForm = (): IRegisterForm => {
     } catch (error) {
       console.log(error)
     }
+
+    await CrewApi.post('userRoute/register', {
+      id: (await supabase.auth.getUser()).data.user?.id,
+      email: data.email,
+      name: data.firstName,
+      lastName: data.lastName,
+    })
   }
 
   return { register, handleSubmit, onSubmit, errors, isSubmitting }
