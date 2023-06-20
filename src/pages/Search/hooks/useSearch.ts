@@ -28,7 +28,6 @@ export const getSearchProjects = async ({
   const projects = data?.map((project, index) => ({
     ...project,
     mainImage: images[index % 4],
-    fundingPercentage: Math.floor(Math.random() * 100),
   }))
 
   return projects

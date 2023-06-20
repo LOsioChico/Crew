@@ -24,7 +24,6 @@ export const getProjectById = async (
     ...data,
     mainImage: images[0],
     images,
-    fundingPercentage: Math.floor(Math.random() * 100),
   }
 
   return project
