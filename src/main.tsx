@@ -1,4 +1,3 @@
-import '@splidejs/splide/css/skyblue'
 import ReactDOM from 'react-dom/client'
 import { QueryProvider } from './components'
 import './index.css'
