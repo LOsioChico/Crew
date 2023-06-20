@@ -1,12 +1,8 @@
 import { Category } from '.'
+import { type ShowState } from '../interface'
 
 interface CategoriesContainerProps {
-  setShowState: React.Dispatch<
-    React.SetStateAction<{
-      category: string
-      sort: string
-    }>
-  >
+  setShowState: React.Dispatch<React.SetStateAction<ShowState>>
 }
 
 export const CategoriesContainer: React.FC<CategoriesContainerProps> = ({

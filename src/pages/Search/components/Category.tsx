@@ -1,12 +1,8 @@
+import { type ShowState } from '../interface'
 import { handleCategoryFilter } from '../utils/filtersHandler'
 
 interface CategoryProps {
-  setShowState: React.Dispatch<
-    React.SetStateAction<{
-      category: string
-      sort: string
-    }>
-  >
+  setShowState: React.Dispatch<React.SetStateAction<ShowState>>
   name: string
 }
 
