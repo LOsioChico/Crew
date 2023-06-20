@@ -1,7 +1,7 @@
-import tecnologia from '../../../../assets/Iconos/chipUno.png'
-import health from '../../../../assets/Iconos/corazon.png'
-import entretenimiento from '../../../../assets/Iconos/peliculas.png'
-import dataScience from '../../../../assets/Iconos/science.png'
+import tecnologia from '../../../../assets/Iconos/Chip.png'
+import comunidad from '../../../../assets/Iconos/red.png'
+
+import creative from '../../../../assets/Iconos/creative.png'
 import search from '../../../../assets/Iconos/search.png'
 import logo from '../../../../assets/favicon.png'
 
@@ -40,16 +40,7 @@ export const TopCategories: React.FC = () => {
                     src={tecnologia}
                     className=' ml-auto mr-auto h-12 w-12'
                   ></img>
-                  <span className='text-sm'>Technology</span>
-                </a>
-              </div>
-            </li>
-
-            <li className='mx-4'>
-              <div className='flex flex-col items-center justify-center '>
-                <a href='#'>
-                  <img src={dataScience} className=' ml-0 mr-0 h-12 w-12'></img>
-                  <span className='ml-2 mr-2 text-sm'>Science</span>
+                  <span className='text-sm'>Tech & Innovation</span>
                 </a>
               </div>
             </li>
@@ -58,31 +49,30 @@ export const TopCategories: React.FC = () => {
               <div className='flex flex-col items-center justify-center '>
                 <a href='#'>
                   <img
-                    src={entretenimiento}
+                    src={creative}
                     className=' ml-auto mr-auto h-12 w-12'
                   ></img>
-                  <span className='text-sm'>Entertainment</span>
+                  <span className='ml-2 mr-2 text-sm'>Creative Works</span>
                 </a>
               </div>
             </li>
+
             <li className='mx-4'>
-              <div className='flex flex-col items-center justify-center'>
+              <div className='flex flex-col items-center justify-center '>
                 <a href='#'>
                   <img
-                    src={health}
+                    src={comunidad}
                     className=' ml-auto mr-auto h-12 w-12'
                   ></img>
-                  <span className='text-sm'>Healh & Wellness</span>
+                  <span className='text-sm'>Community Projects</span>
                 </a>
               </div>
             </li>
+            <li className='mx-4'></li>
             <li className='mx-4'>
               <div className='flex flex-col  items-center justify-center'>
                 <a href='#'>
-                  <img
-                    src={search}
-                    className=' ml-auto mr-auto h-12 w-12'
-                  ></img>
+                  <img src={search} className=' ml-1 mr-0 h-12 w-12'></img>
                   <span className='ml-2 text-sm'>More</span>
                 </a>
               </div>
