@@ -19,7 +19,7 @@ export interface IProject {
   fundingDayLeft: number
   updates?: IUpdate[]
   category: Category
-  creator: ICreator
+  creatorId: string
 }
 
 export interface IUpdate {
