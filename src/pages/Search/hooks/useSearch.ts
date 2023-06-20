@@ -1,4 +1,5 @@
 import { CrewApi } from '@/api'
+import { images } from '@/data'
 import { type IProject } from '@/interfaces'
 import { useQuery } from '@tanstack/react-query'
 
@@ -6,13 +7,30 @@ interface getSearchProjectsProps {
   params: URLSearchParams
 }
 
+interface IProjectError {
+  errorMessage: string
+}
+
 export const getSearchProjects = async ({
   params,
 }: getSearchProjectsProps): Promise<IProject[]> => {
-  const response = await CrewApi.get('/projectRoute/searchProjects', {
-    params,
-  })
-  return response.data
+  const { data } = await CrewApi.get<IProject[] | IProjectError>(
+    '/projectRoute/searchProjects',
+    {
+      params,
+    }
+  )
+
+  if ('errorMessage' in data) {
+    return []
+  }
+
+  const projects = data?.map((project, index) => ({
+    ...project,
+    mainImage: images[index % 4],
+  }))
+
+  return projects
 }
 
 interface IUseSearch {

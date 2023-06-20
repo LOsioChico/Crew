@@ -2,14 +2,11 @@ import { type ShowState } from '../interface'
 
 interface URLParamsProps {
   showState: ShowState
-  search: string
 }
 
-export const URLParams = ({
-  showState,
-  search,
-}: URLParamsProps): URLSearchParams => {
+export const URLParams = ({ showState }: URLParamsProps): URLSearchParams => {
   const params = new URLSearchParams()
+
   if (showState.category !== 'All Projects') {
     params.append('category', showState.category)
   } else {
@@ -17,7 +14,7 @@ export const URLParams = ({
   }
 
   params.append('sort', showState.sort)
-  params.append('q', search)
+  params.append('q', showState.search)
   params.append('s', '20')
   params.append('p', '0')
 

@@ -11,7 +11,7 @@ export const ProjectValidation = z.object({
     .max(40, 'La descripción corta debe tener menos de 40 caracteres'),
   description: z
     .string()
-    .min(3, 'La descripción debe tener al menos 3 caracteres')
+    .min(10, 'La descripción debe tener al menos 10 caracteres')
     .max(100, 'La descripción debe tener menos de 100 caracteres'),
   fundingGoal: z
     .number()

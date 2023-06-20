@@ -3,14 +3,16 @@ import { images } from '@/data'
 import { type IProject } from '@/interfaces'
 import { useQuery } from '@tanstack/react-query'
 
-interface IUseProjects {
+interface IUsePopularProjects {
   projects: IProject[] | undefined
   isLoading: boolean
   error: unknown
 }
 
-export const getProjects = async (): Promise<IProject[]> => {
-  const { data } = await CrewApi.get<IProject[]>('/projectRoute/allProjects')
+export const getPopularProjects = async (): Promise<IProject[]> => {
+  const { data } = await CrewApi.get<IProject[]>(
+    '/projectRoute/twentyMostTrending'
+  )
 
   if ('errorMessage' in data) {
     return []
@@ -24,10 +26,10 @@ export const getProjects = async (): Promise<IProject[]> => {
   return projects
 }
 
-export const useProjects = (): IUseProjects => {
+export const usePopularProjects = (): IUsePopularProjects => {
   const { data, isLoading, error } = useQuery<IProject[]>({
-    queryKey: ['projects'],
-    queryFn: getProjects,
+    queryKey: ['popularProjects'],
+    queryFn: getPopularProjects,
   })
 
   return { projects: data, isLoading, error }

@@ -1,21 +1,39 @@
 import { mainCarrouselProjects } from '@/data'
-import { useMainSplide } from '../../hooks'
-import { MainCarrouselItem } from './components'
+import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { MainCarrouselInfo } from './components'
+
+import 'swiper/css'
+import 'swiper/css/autoplay'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
 
 export const MainCarrousel: React.FC = () => {
-  useMainSplide()
-
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <div className='splide' id='splide2' role='group'>
-        <div className='splide__track'>
-          <ul className='splide__list'>
-            {mainCarrouselProjects.map((project) => (
-              <MainCarrouselItem project={project} key={project.id} />
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Swiper
+      modules={[Navigation, Pagination, Scrollbar, Autoplay]}
+      slidesPerView={1}
+      navigation={{
+        enabled: true,
+      }}
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      autoplay={{ delay: 3000 }}
+    >
+      {mainCarrouselProjects.map((project) => (
+        <SwiperSlide key={project.id}>
+          <div className='relative h-[500px] w-full'>
+            <div className='absolute h-full w-full bg-black bg-opacity-50' />
+            <MainCarrouselInfo project={project} />
+            <img
+              src={project.mainImage}
+              alt={project.title}
+              className='h-full w-full object-cover'
+            />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   )
 }

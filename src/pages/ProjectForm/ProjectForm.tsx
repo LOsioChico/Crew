@@ -1,8 +1,15 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { ProjectInput, ProjectInputSelect, ProjectTextArea } from './components'
 import { useProjectForm } from './hooks'
 
 export const ProjectForm: React.FC = () => {
-  const { register, handleSubmit, errors, onSubmit } = useProjectForm()
+  const { register, handleSubmit, errors, onSubmit, isSubmitSuccessful } =
+    useProjectForm()
+  const queryClient = useQueryClient()
+
+  if (isSubmitSuccessful) {
+    void queryClient.invalidateQueries(['popularProjects'])
+  }
 
   return (
     <div className='container mx-auto my-10 px-4'>

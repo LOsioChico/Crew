@@ -11,4 +11,5 @@ export interface IProjectForm {
   errors: FieldErrors<ProjectFormType>
   isSubmitting: boolean
   onSubmit: (data: ProjectFormType) => void
+  isSubmitSuccessful: boolean
 }

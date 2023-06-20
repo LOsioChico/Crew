@@ -123,12 +123,7 @@ export const projectsDetail: IProject[] = [
     ],
     fundingGoal: 2000,
     fundingGoalReached: false,
-    creator: {
-      id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
-      avatar: 'https://picsum.photos/200/200',
-    },
+    creatorId: '1',
     updates: [],
   },
   {
@@ -151,12 +146,7 @@ export const projectsDetail: IProject[] = [
     ],
     fundingGoal: 2000,
     fundingGoalReached: false,
-    creator: {
-      id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
-      avatar: 'https://picsum.photos/200/200',
-    },
+    creatorId: '1',
     updates: [],
   },
   {
@@ -179,12 +169,7 @@ export const projectsDetail: IProject[] = [
     ],
     fundingGoal: 10000,
     fundingGoalReached: true,
-    creator: {
-      id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
-      avatar: 'https://picsum.photos/200/200',
-    },
+    creatorId: '1',
     updates: [],
   },
 ]

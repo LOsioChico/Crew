@@ -28,10 +28,10 @@ export const NavBar: React.FC = () => {
         <div className='mr-8 flex items-center gap-5 '>
           <div className={'border-r border-gray-400'}>
             <Link
-              className='duration-300hover:text-secondary cursor-pointer select-none pr-5 active:scale-95'
+              className='cursor-pointer select-none pr-5 duration-300 hover:text-secondary active:scale-95'
               to='/project-form'
             >
-              Crear una Campaña
+              Start a project
             </Link>
           </div>
           {!session && (
@@ -42,7 +42,7 @@ export const NavBar: React.FC = () => {
                   setModalAuth('login')
                 }}
               >
-                Iniciar Sesión
+                Log In
               </button>
 
               <button
@@ -51,7 +51,7 @@ export const NavBar: React.FC = () => {
                   setModalAuth('register')
                 }}
               >
-                Registrarse
+                Sign Up
               </button>
             </>
           )}
@@ -63,7 +63,7 @@ export const NavBar: React.FC = () => {
                 void supabase.auth.signOut()
               }}
             >
-              Cerrar Sesión
+              Log Out
             </button>
           )}
         </div>
