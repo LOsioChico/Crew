@@ -10,21 +10,19 @@ interface IUseProjects {
 }
 
 export const getProjects = async (): Promise<IProject[]> => {
-  return await CrewApi.get<IProject[]>('/projectRoute/allProjects').then(
-    (res) =>
-      res.data.map((project, index) => ({
-        ...project,
-        mainImage: images[index % 4],
-        images,
-        fundingPercentage: Math.floor(Math.random() * 100),
-        creator: {
-          id: '1',
-          firstName: 'Juan',
-          lastName: 'Perez',
-          avatar: images[index % 4],
-        },
-      }))
-  )
+  const { data } = await CrewApi.get<IProject[]>('/projectRoute/allProjects')
+
+  if ('errorMessage' in data) {
+    return []
+  }
+
+  const projects = data?.map((project, index) => ({
+    ...project,
+    mainImage: images[index % 4],
+    fundingPercentage: Math.floor(Math.random() * 100),
+  }))
+
+  return projects
 }
 
 export const useProjects = (): IUseProjects => {
