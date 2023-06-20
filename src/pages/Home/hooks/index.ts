@@ -1,3 +1,2 @@
-export * from './index';
-export * from './useMainSplide';
-export * from './usePopularSplide';
+export * from './index'
+export * from './usePopularProjects'
