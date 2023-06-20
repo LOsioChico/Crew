@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Explorer: React.FC = () => {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = (): void => {
@@ -30,7 +32,9 @@ export const Explorer: React.FC = () => {
               <li className='mb-2'>
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                  onClick={toggleModal}
+                  onClick={() => {
+                    navigate('/search?category=all&sort=Trending&q=&s=20&p=0')
+                  }}
                 >
                   All Projects
                 </button>
@@ -38,7 +42,11 @@ export const Explorer: React.FC = () => {
               <li className='mb-2'>
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                  onClick={toggleModal}
+                  onClick={() => {
+                    navigate(
+                      '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0'
+                    )
+                  }}
                 >
                   Tech & Innovation
                 </button>
@@ -46,7 +54,11 @@ export const Explorer: React.FC = () => {
               <li className='mb-2'>
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                  onClick={toggleModal}
+                  onClick={() => {
+                    navigate(
+                      '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0'
+                    )
+                  }}
                 >
                   Creative Works
                 </button>
@@ -54,7 +66,11 @@ export const Explorer: React.FC = () => {
               <li className='mb-2'>
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
-                  onClick={toggleModal}
+                  onClick={() => {
+                    navigate(
+                      '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0'
+                    )
+                  }}
                 >
                   Community Projects
                 </button>
