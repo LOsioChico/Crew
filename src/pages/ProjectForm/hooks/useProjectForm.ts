@@ -12,7 +12,7 @@ export const useProjectForm = (): IProjectForm => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ProjectFormType>({
     mode: 'onBlur',
     resolver: zodResolver(ProjectValidation),
@@ -20,10 +20,10 @@ export const useProjectForm = (): IProjectForm => {
 
   const onSubmit = async (data: ProjectFormType): Promise<void> => {
     try {
-      void CrewApi.post('/projectRoute', {
+      void (await CrewApi.post('/projectRoute', {
         ...data,
         creatorId: (await supabase.auth.getUser()).data.user?.id,
-      })
+      }))
     } catch (error) {
       console.log(error)
     }
@@ -35,5 +35,6 @@ export const useProjectForm = (): IProjectForm => {
     errors,
     isSubmitting,
     onSubmit,
+    isSubmitSuccessful,
   }
 }
