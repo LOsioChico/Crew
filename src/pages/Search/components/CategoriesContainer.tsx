@@ -14,10 +14,10 @@ export const CategoriesContainer: React.FC<CategoriesContainerProps> = ({
 }) => {
   return (
     <aside>
-      <div className='mt-16 flex h-auto w-[240px] rounded-b-xl bg-primary pl-12 pt-6'>
-        <ul className='last:mb-4'>
-          <li>
-            <h2 className='mb-2 font-bold text-white'> Categories:</h2>
+      <div className='mt-20 h-72 pl-12 pt-6'>
+        <ul className='h-auto w-60 text-base last:mb-4'>
+          <li className='mb-2'>
+            <h2 className='mb-2 text-lg font-bold text-black'> Categories:</h2>
             <hr />
           </li>
           {categories.map((category) => (
