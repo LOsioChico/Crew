@@ -3,8 +3,12 @@ import { useParams } from 'react-router-dom'
 import { ProjectAvatar, ProjectSlider } from './components'
 import { useProjectById } from './hooks'
 
+interface UserParams {
+  id: string
+}
+
 export const Projects: React.FC = () => {
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams<keyof UserParams>() as UserParams
   const { project } = useProjectById(id)
 
   if (project === undefined) {
