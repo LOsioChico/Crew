@@ -1,3 +1,6 @@
+export * from './getProjectById'
+export * from './getUserById'
 export * from './index'
 export * from './numberToCurrencys'
+export * from './projectsFetcher'
 export * from './supabase'
