@@ -1,4 +1,4 @@
-import { useUserById } from '../hooks/useCreator'
+import { useUserById } from '../hooks/useUserById'
 
 interface ProjectAvatarProps {
   creatorId: string
