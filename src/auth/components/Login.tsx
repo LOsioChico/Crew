@@ -2,6 +2,7 @@ import { LoadingIcon } from '@/assets/LoadingIcon'
 import { type LoginProps } from '@/interfaces/AuthModalProps'
 import { AuthLoginInput } from '.'
 import { useLoginForm } from '../hooks'
+import { Google } from './Google'
 
 export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
   const { onSubmit, handleSubmit, isSubmitting, errors, register } =
@@ -78,6 +79,7 @@ export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
           Sign Up
         </span>
       </p>
+      <Google/>
     </div>
   )
 }
