@@ -10,7 +10,7 @@ export const OAuthButton: React.FC<OAuthButtonProps> = ({ provider }) => {
   return (
     <button
       onClick={() => {
-        void signInWithOAuth({ provider: 'google' })
+        void signInWithOAuth({ provider })
       }}
       className='mx-auto mb-1 mt-3 flex items-center justify-center rounded-md bg-primary duration-300 hover:bg-secondaryDark'
     >
