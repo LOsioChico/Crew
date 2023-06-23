@@ -1,3 +1,4 @@
+import { useUserIdStore } from '@/store'
 import { useFavoriteHandler } from '@/utils'
 
 interface FavoriteButtonProps {
@@ -9,9 +10,11 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
 }) => {
   const { isFavorite, addFavoriteProject, removeFavoriteProject } =
     useFavoriteHandler({ projectId })
+  const { userId } = useUserIdStore()
   return (
     <button
       onClick={() => {
+        if (userId === '') return
         if (isFavorite) {
           void removeFavoriteProject(projectId)
         } else {
