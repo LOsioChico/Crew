@@ -1,6 +1,6 @@
 import { LoadingIcon } from '@/assets/LoadingIcon'
 import { type RegisterProps } from '@/interfaces'
-import { AuthRegisterInput } from '.'
+import { AuthRegisterInput, OAuthButton } from '.'
 import { useRegisterForm } from '../hooks/useRegisterForm'
 
 export const Register: React.FC<RegisterProps> = ({ setModalAuth }) => {
@@ -89,7 +89,7 @@ export const Register: React.FC<RegisterProps> = ({ setModalAuth }) => {
           Create Account
         </button>
       </form>
-      <p className='flex justify-center pt-1'>
+      <p className='mb-2 flex justify-center pt-1'>
         Already have an account?&nbsp;
         <span
           className='cursor-pointer font-bold duration-300 hover:text-secondaryDark'
@@ -100,6 +100,8 @@ export const Register: React.FC<RegisterProps> = ({ setModalAuth }) => {
           Log In
         </span>
       </p>
+      <hr />
+      <OAuthButton provider='google' />
     </main>
   )
 }

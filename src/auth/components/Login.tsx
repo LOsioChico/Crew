@@ -2,6 +2,7 @@ import { LoadingIcon } from '@/assets/LoadingIcon'
 import { type LoginProps } from '@/interfaces/AuthModalProps'
 import { AuthLoginInput } from '.'
 import { useLoginForm } from '../hooks'
+import { OAuthButton } from './OAuthButton'
 
 export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
   const { onSubmit, handleSubmit, isSubmitting, errors, register } =
@@ -65,7 +66,7 @@ export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
         </button>
       </form>
 
-      <p className='flex justify-center'>
+      <p className='mb-2 flex justify-center'>
         New to Crew?&nbsp;
         <span
           className='cursor-pointer font-bold
@@ -78,6 +79,8 @@ export const Login: React.FC<LoginProps> = ({ setModalAuth }) => {
           Sign Up
         </span>
       </p>
+      <hr />
+      <OAuthButton provider='google' />
     </div>
   )
 }
