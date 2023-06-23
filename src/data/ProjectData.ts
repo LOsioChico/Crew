@@ -22,7 +22,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 1000,
     fundingPercentage: 50,
     fundingDayLeft: 30,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
   },
   {
     id: '2',
@@ -33,7 +33,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 654,
     fundingPercentage: 13,
     fundingDayLeft: 30,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
   },
   {
     id: '3',
@@ -44,7 +44,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 10000,
     fundingPercentage: 100,
     fundingDayLeft: 0,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
   },
   {
     id: '4',
@@ -55,7 +55,7 @@ export const ProjectCardsData: ProjectCardType[] = [
     fundingCurrent: 7854,
     fundingPercentage: 78,
     fundingDayLeft: 30,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
   },
 ]
 
@@ -114,7 +114,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 1000,
     fundingPercentage: 50,
     fundingDayLeft: 30,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',
@@ -137,7 +137,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 654,
     fundingPercentage: 13,
     fundingDayLeft: 30,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',
@@ -160,7 +160,7 @@ export const projectsDetail: IProject[] = [
     fundingCurrent: 10000,
     fundingPercentage: 100,
     fundingDayLeft: 0,
-    category: 'Tecnologia e innovación',
+    category: 'Tech & Innovation',
     images: [
       'https://picsum.photos/500/400',
       'https://picsum.photos/400/500',
