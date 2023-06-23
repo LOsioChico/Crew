@@ -1,9 +1,7 @@
 import logo from '@/assets/favicon.png'
-import { useNavigate } from 'react-router-dom'
 import { CategoryItem } from './components'
 
 export const TopCategories: React.FC = () => {
-  const navigate = useNavigate()
   return (
     <div className=' m-auto mt-8 flex h-[250px] w-full flex-col items-center justify-around '>
       <div className='mb-4 mt-0 box-border flex h-[125px] w-full justify-center   '>
@@ -17,16 +15,7 @@ export const TopCategories: React.FC = () => {
           <p className='text-center text-sm'>
             projects just for you and get great recommendations when .
           </p>
-          <div className='mt-3 box-border flex w-1/2  justify-center gap-3   text-sm'>
-            <button
-              className=' rounded-sm  border-secondaryDark bg-secondaryDark px-3 py-1 uppercase text-white'
-              onClick={() => {
-                navigate('/project-form')
-              }}
-            >
-              Sign Up
-            </button>
-
+          <div className='mt-3 box-border flex w-1/2 justify-center text-sm'>
             <button className='mr-0 rounded-sm border bg-white px-3 py-1 uppercase  text-black focus:bg-white focus:outline-none'>
               Learn more
             </button>

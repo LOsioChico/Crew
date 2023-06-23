@@ -1,12 +1,9 @@
 import { type IComment } from '.'
 
-type Category =
-  | 'Tecnologia e innovación'
-  | 'Trabajos Creativos'
-  | 'Proyectos Comunitarios'
+type Category = 'Tech & Innovation' | 'Creative Works' | 'Community Projects'
 
 export interface IProject {
-  id: number
+  id: string
   mainImage: string // nel
   images: string[] // nel
   title: string
