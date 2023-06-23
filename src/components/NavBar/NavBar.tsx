@@ -3,11 +3,12 @@ import { Auth } from '@/auth'
 import { useAuthHandler } from '@/auth/hooks'
 import { Explorer } from '@/components/NavBar/Explorer'
 import { supabase } from '@/utils'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
 
 export const NavBar: React.FC = () => {
   const navigate = useNavigate()
+  const location = useLocation().pathname
   const { session, modalAuth, setModalAuth } = useAuthHandler()
 
   return (
@@ -22,9 +23,10 @@ export const NavBar: React.FC = () => {
           >
             <Logo />
           </div>
-          <Explorer />
+
+          {location !== '/search' && <Explorer />}
         </div>
-        <SearchBar />
+        {location !== '/search' && <SearchBar />}
         <div className='mr-8 flex items-center gap-5 '>
           <div className={'border-r border-gray-400'}>
             <Link

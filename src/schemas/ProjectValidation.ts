@@ -20,7 +20,7 @@ export const ProjectValidation = z.object({
   fundingDayLeft: z
     .number()
     .min(1, 'Los días restantes de financiación deben ser mayor a 0')
-    .max(60, 'Los días restantes de financiación deben ser menor a 60'),
+    .max(365, 'Los días restantes de financiación deben ser menor a 365'),
   category: z.enum([
     'Tecnologia e innovación',
     'Trabajos Creativos',

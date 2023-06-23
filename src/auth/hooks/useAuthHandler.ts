@@ -1,3 +1,4 @@
+import { useUserIdStore } from '@/store'
 import { supabase } from '@/utils'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -17,26 +18,30 @@ export const useAuthHandler = (): IUseAuth => {
   )
   const location = useLocation().pathname
   const navigate = useNavigate()
+  const { setUserId } = useUserIdStore()
 
   useEffect(() => {
     void supabase.auth.getSession().then(({ data }) => {
       if (data.session != null) {
         setSession(true)
+        setUserId(data.session.user.id)
       }
     })
-  }, [])
+  }, [setUserId])
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event) => {
+    supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN') {
         setSession(true)
         setModalAuth('closed')
+        if (session != null) setUserId(session.user.id)
       }
       if (event === 'SIGNED_OUT') {
         setSession(false)
+        setUserId('')
       }
     })
-  }, [])
+  }, [setUserId])
 
   useEffect(() => {
     void supabase.auth.getSession().then(({ data: { session } }) => {

@@ -1,22 +1,29 @@
 import { type ProjectCardType } from '@/data'
 import { numberToUSD } from '@/utils'
 import { useNavigate } from 'react-router-dom'
+import { FavoriteButton } from '.'
 
 interface ProjectCardProps {
   project: ProjectCardType
 }
 
+export enum CategoryRedirect {
+  'Tech & Innovation' = '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0',
+  'Creative Works' = '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0',
+  'Community Projects' = '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0',
+}
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const navigate = useNavigate()
   return (
-    <li className='h-[650px] w-1/4 py-8'>
-      <div
-        className='group flex h-full cursor-pointer flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'
-        onClick={() => {
-          navigate(`/projects/${project.id}`)
-        }}
-      >
-        <div className='h-1/2'>
+    <li className='h-[650px] w-1/4 cursor-default py-8'>
+      <div className='group flex h-full flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
+        <div
+          className='h-1/2 cursor-pointer'
+          onClick={() => {
+            navigate(`/projects/${project.id}`)
+          }}
+        >
           <img
             className='h-full w-full rounded-t-2xl object-cover'
             src={project.mainImage}
@@ -28,11 +35,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <p className='text-sm font-bold uppercase text-secondaryDark'>
               Funding
             </p>
-            <span className='material-symbols-outlined text-secondary duration-300 hover:scale-105 hover:text-pink-300 active:scale-95'>
-              favorite
-            </span>
+            <FavoriteButton projectId={project.id} />
           </div>
-          <div>
+          <div
+            className='cursor-pointer'
+            onClick={() => {
+              navigate(`/projects/${project.id}`)
+            }}
+          >
             <h3 className='mb-1 mt-2 text-xl font-semibold duration-1000'>
               {project.title}
             </h3>
@@ -42,7 +52,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 : project.description}
             </p>
           </div>
-          <div className='my-2'>
+          <div
+            className='my-2 cursor-pointer'
+            onClick={() => {
+              navigate(CategoryRedirect[project.category])
+            }}
+          >
             <span className='mr-2 mt-2 inline-block rounded-full bg-secondaryDark px-2 py-1 text-xs font-semibold text-white duration-300 hover:scale-105'>
               {project.category}
             </span>
