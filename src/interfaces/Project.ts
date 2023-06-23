@@ -4,8 +4,8 @@ type Category = 'Tech & Innovation' | 'Creative Works' | 'Community Projects'
 
 export interface IProject {
   id: string
-  mainImage: string // nel
-  images: string[] // nel
+  mainImage: string
+  images: string[]
   title: string
   shortDescription: string
   description: string
