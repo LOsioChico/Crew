@@ -1,5 +1,4 @@
 export * from './index'
 export * from './useAuthHandler'
-export * from './useFavoriteProjects'
 export * from './useLoginForm'
 export * from './useRegisterForm'
