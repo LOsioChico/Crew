@@ -1,4 +1,4 @@
-import { supabase } from '@/utils'
+import { isRegistered, supabase } from '@/utils'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -27,10 +27,14 @@ export const useAuthHandler = (): IUseAuth => {
   }, [])
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event) => {
+    supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN') {
         setSession(true)
         setModalAuth('closed')
+        if (session?.user.app_metadata.provider?.includes('google') ?? false) {
+          if (session?.user.id !== undefined)
+            void isRegistered(session?.user.id)
+        }
       }
       if (event === 'SIGNED_OUT') {
         setSession(false)
