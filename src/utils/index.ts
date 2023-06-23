@@ -1,3 +1,5 @@
 export * from './index'
+export * from './isRegistered'
 export * from './numberToCurrencys'
+export * from './signInWithOAuth'
 export * from './supabase'
