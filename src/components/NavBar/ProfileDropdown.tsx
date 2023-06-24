@@ -60,6 +60,7 @@ export const ProfileDropdown: React.FC = () => {
                     className='text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
                     onClick={() => {
                       void supabase.auth.signOut()
+                      navigate('/')
                     }}
                   >
                     Log Out
