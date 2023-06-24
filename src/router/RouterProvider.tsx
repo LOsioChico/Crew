@@ -1,5 +1,5 @@
 import { Footer, NavBar } from '@/components'
-import { Home, ProjectForm, Projects, Search } from '@/pages'
+import { Home, ProjectForm, Projects, Search, Profile } from '@/pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export const RouterProvider: React.FC = () => {
@@ -11,6 +11,7 @@ export const RouterProvider: React.FC = () => {
         <Route path='/projects/:id' element={<Projects />} />
         <Route path='/project-form' element={<ProjectForm />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/userDetail' element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>

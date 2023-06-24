@@ -5,6 +5,7 @@ import { Explorer } from '@/components/NavBar/Explorer'
 import { supabase } from '@/utils'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
+import { ProfileDropdown } from './ProfileDropdown'
 
 export const NavBar: React.FC = () => {
   const navigate = useNavigate()
@@ -69,6 +70,7 @@ export const NavBar: React.FC = () => {
             </button>
           )}
         </div>
+        <ProfileDropdown />
       </nav>
       <Auth modalAuth={modalAuth} setModalAuth={setModalAuth} />
     </header>
