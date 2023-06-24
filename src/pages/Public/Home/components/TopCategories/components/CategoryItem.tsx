@@ -1,5 +1,4 @@
 import { icons } from '@/assets'
-import { PublicRoutes } from '@/router/RouterProvider'
 import { Link } from 'react-router-dom'
 
 interface CategoryItemProps {
@@ -15,10 +14,10 @@ enum Categories {
 }
 
 const SearchLinks = {
-  Tech: `${PublicRoutes.search}?category='Tech+&+Innovation'}`,
-  Creative: `${PublicRoutes.search}?category='Creative+Works'`,
-  Community: `${PublicRoutes.search}?category='Community+Projects`,
-  More: `${PublicRoutes.search}`,
+  Tech: `/search?category='Tech+&+Innovation'}`,
+  Creative: `/search?category='Creative+Works'`,
+  Community: `/search?category='Community+Projects`,
+  More: `/search`,
 }
 
 export const CategoryItem: React.FC<CategoryItemProps> = ({

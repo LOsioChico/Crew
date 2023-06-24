@@ -1,12 +1,10 @@
 import Location from '@/assets/location.svg'
 import { FavoritesCarrousel } from '../Home/components'
-import { useUserIdStore } from '@/store'
-import { CrewApi } from '@/api'
 
 export const Profile: React.FC = () => {
   // /userRoute/userDetails?id=${id}
+  // const { userId } = useUserIdStore()
 
-  const { userId } = useUserIdStore()
   return (
     <div className='flex justify-center'>
       <div className='flex w-3/4 flex-col'>
