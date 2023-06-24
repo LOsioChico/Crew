@@ -1,4 +1,5 @@
 import { CrewApi } from '@/api'
+import { PublicRoutes } from '@/router/RouterProvider'
 import {
   ProjectValidation,
   type ProjectFormType,
@@ -32,7 +33,7 @@ export const useProjectForm = (): IProjectForm => {
         }
       )
       if (projectId.message === undefined) return
-      navigate(`/projects/${projectId.message}`)
+      navigate(`${PublicRoutes.projects}/${projectId.message}`)
     } catch (error) {
       console.log(error)
     }

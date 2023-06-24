@@ -1,4 +1,5 @@
 import { ProjectCard } from '@/components'
+import { PublicRoutes } from '@/router/RouterProvider'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CategoriesContainer } from './components'
@@ -25,7 +26,7 @@ export const Search: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    navigate('/search?' + params.toString())
+    navigate(`${PublicRoutes.search}?` + params.toString())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate])
 
