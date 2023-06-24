@@ -31,7 +31,12 @@ export const Profile: React.FC = () => {
         </div>
         <hr className='border-thick mb-1 border border-black' />
         <div className='flex h-96 w-full border border-black'>
-          <div></div>
+          <div>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta
+            sequi optio quis porro accusantium laborum sapiente impedit vel
+            nobis non, pariatur omnis numquam aspernatur incidunt ipsa, unde
+            facilis. Numquam, maxime!
+          </div>
           <div></div>
         </div>
       </div>

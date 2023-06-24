@@ -20,7 +20,11 @@ export const PopularCarrousel: React.FC = () => {
           </div>
         ) : (
           projects?.map((project) => {
-            return <ProjectCard key={project.id} project={project} />
+            return (
+              <div key={project.id} className='w-1/4'>
+                <ProjectCard project={project} />
+              </div>
+            )
           })
         )}
       </ul>

@@ -20,7 +20,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       }}
     >
       <span
-        className={`material-symbols-outlined duration-500 hover:scale-105 active:scale-95 ${
+        className={`material-symbols-outlined duration-500 hover:scale-125 active:scale-95 ${
           isFavorite ? 'text-pink-300' : 'text-secondary hover:text-pink-300'
         }`}
       >

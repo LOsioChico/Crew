@@ -16,7 +16,7 @@ export enum CategoryRedirect {
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const navigate = useNavigate()
   return (
-    <li className='h-[650px] w-1/4 cursor-default py-8'>
+    <li className='h-[650px] cursor-default py-8'>
       <div className='group flex h-full flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
         <div
           className='h-1/2 cursor-pointer'
