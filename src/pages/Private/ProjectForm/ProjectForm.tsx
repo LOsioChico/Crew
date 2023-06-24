@@ -1,10 +1,17 @@
+import { LoadingIcon } from '@/assets/LoadingIcon'
 import { useQueryClient } from '@tanstack/react-query'
 import { ProjectInput, ProjectInputSelect, ProjectTextArea } from './components'
 import { useProjectForm } from './hooks'
 
 export const ProjectForm: React.FC = () => {
-  const { register, handleSubmit, errors, onSubmit, isSubmitSuccessful } =
-    useProjectForm()
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    isSubmitSuccessful,
+    isSubmitting,
+  } = useProjectForm()
   const queryClient = useQueryClient()
 
   if (isSubmitSuccessful) {
@@ -20,35 +27,35 @@ export const ProjectForm: React.FC = () => {
         <ProjectInput
           name='title'
           type='text'
-          placeholder='Título'
+          placeholder='Title'
           register={register}
-          label='Título'
+          label='Title'
           errors={errors}
         />
 
         <ProjectInput
           name='shortDescription'
           type='text'
-          placeholder='Descripción corta'
+          placeholder='Short description'
           register={register}
-          label='Descripción corta'
+          label='Short description'
           errors={errors}
         />
 
         <ProjectTextArea
           name='description'
           register={register}
-          label='Descripción'
+          label='General description'
           errors={errors}
-          placeholder='Descripción general'
+          placeholder='General description'
         />
 
         <ProjectInput
           name='fundingGoal'
           type='number'
-          placeholder='Recaudación pretendida'
+          placeholder='Goal funding'
           register={register}
-          label='Recaudación'
+          label='Goal funding'
           errors={errors}
           defaultValue='0'
         />
@@ -56,9 +63,9 @@ export const ProjectForm: React.FC = () => {
         <ProjectInput
           name='fundingDayLeft'
           type='number'
-          placeholder='Plazo de recaudación'
+          placeholder='Funding deadline'
           register={register}
-          label='Plazo en días'
+          label='Funding deadline'
           errors={errors}
           defaultValue='0'
         />
@@ -66,22 +73,22 @@ export const ProjectForm: React.FC = () => {
         <ProjectInputSelect
           name='category'
           register={register}
-          label='Categoría'
+          label='Category'
           errors={errors}
-          defaultOption='Selecciona una categoría'
+          defaultOption='Select a category'
           options={[
-            'Tecnologia e innovación',
-            'Trabajos Creativos',
-            'Proyectos Comunitarios',
+            'Tech & Innovation',
+            'Creative Works',
+            'Community Projects',
           ]}
         />
 
         <ProjectInputSelect
           name='location'
           register={register}
-          label='Ubicación'
+          label='Location'
           errors={errors}
-          defaultOption='Selecciona una ubicación'
+          defaultOption='Select a location'
           options={['Argentina']}
         />
 
@@ -89,7 +96,8 @@ export const ProjectForm: React.FC = () => {
           type='submit'
           className='bg-primary-500 mx-auto block rounded bg-primary px-4 py-2 font-bold text-white duration-300 hover:bg-secondaryDark active:scale-95'
         >
-          Crear proyecto
+          {isSubmitting && <LoadingIcon />}
+          Create project
         </button>
       </form>
     </div>

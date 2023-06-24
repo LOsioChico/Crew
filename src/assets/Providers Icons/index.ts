@@ -1,4 +1,4 @@
-import google from './googleBtnx2.png'
+import google from './continueWithGoogle.png'
 
 type IProvidersImages = Record<string, string>
 

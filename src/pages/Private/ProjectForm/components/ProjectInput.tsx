@@ -37,7 +37,7 @@ export const ProjectInput: React.FC<ProjectInputProps> = ({
       />
       {errors[name] != null && (
         <span className='ml-1 text-sm font-semibold text-red-600'>
-          {errors[name]?.message ?? 'Este campo es requerido'}
+          {errors[name]?.message ?? 'This field is required'}
         </span>
       )}
     </div>
