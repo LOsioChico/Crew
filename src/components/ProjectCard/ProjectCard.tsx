@@ -1,4 +1,5 @@
 import { type ProjectCardType } from '@/data'
+import { PublicRoutes } from '@/router/RouterProvider'
 import { numberToUSD } from '@/utils'
 import { useNavigate } from 'react-router-dom'
 import { FavoriteButton } from '.'
@@ -7,10 +8,10 @@ interface ProjectCardProps {
   project: ProjectCardType
 }
 
-export enum CategoryRedirect {
-  'Tech & Innovation' = '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0',
-  'Creative Works' = '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0',
-  'Community Projects' = '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0',
+export const CategoryRedirect = {
+  'Tech & Innovation': `${PublicRoutes.search}?category='Tech+%26+Innovation'`,
+  'Creative Works': `${PublicRoutes.search}?category='Creative+Works'`,
+  'Community Projects': `${PublicRoutes.search}?category='Community+Projects`,
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
@@ -21,7 +22,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div
           className='h-1/2 cursor-pointer'
           onClick={() => {
-            navigate(`/projects/${project.id}`)
+            navigate(`${PublicRoutes.projects}/${project.id}`)
           }}
         >
           <img
@@ -40,7 +41,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <div
             className='cursor-pointer'
             onClick={() => {
-              navigate(`/projects/${project.id}`)
+              navigate(`${PublicRoutes.projects}/${project.id}`)
             }}
           >
             <h3 className='mb-1 mt-2 text-xl font-semibold duration-1000'>
