@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export const PublicRoutes = {
   home: '/',
-  projects: '/projects/:id',
+  projects: '/projects',
   search: '/search',
-  profile: '/userProfile/:id',
+  profile: '/userProfile',
 }
 
 export const PrivateRoutes = {
@@ -20,9 +20,9 @@ export const RouterProvider: React.FC = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path={PublicRoutes.home} element={<Home />} />
-          <Route path={PublicRoutes.projects} element={<Projects />} />
+          <Route path={`${PublicRoutes.projects}/:id`} element={<Projects />} />
           <Route path={PublicRoutes.search} element={<Search />} />
-          <Route path={PublicRoutes.profile} element={<Profile />} />
+          <Route path={`${PublicRoutes.profile}/:id`} element={<Profile />} />
           <Route element={<AuthGuard />}>
             <Route
               path={PrivateRoutes.createProject}
