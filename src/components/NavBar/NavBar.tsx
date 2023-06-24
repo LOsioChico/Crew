@@ -2,7 +2,6 @@ import { Logo } from '@/assets/Logo'
 import { Auth } from '@/auth'
 import { useAuthHandler } from '@/auth/hooks'
 import { Explorer } from '@/components/NavBar/Explorer'
-import { supabase } from '@/utils'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
 import { ProfileDropdown } from './ProfileDropdown'
@@ -58,19 +57,21 @@ export const NavBar: React.FC = () => {
               </button>
             </>
           )}
-
           {session && (
-            <button
-              className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary'
-              onClick={() => {
-                void supabase.auth.signOut()
-              }}
-            >
-              Log Out
-            </button>
+            <div className='flex items-center'>
+              <div className='relative mr-2 h-10 w-10'>
+                <div className='absolute inset-0 overflow-hidden rounded-full'>
+                  <img
+                    className='h-full w-full object-cover'
+                    src='https://s1.abcstatics.com/media/play/2020/09/29/avatar-kE4H--620x349@abc.jpeg'
+                    alt='Profile'
+                  />
+                </div>
+              </div>
+              <ProfileDropdown />
+            </div>
           )}
         </div>
-        <ProfileDropdown />
       </nav>
       <Auth modalAuth={modalAuth} setModalAuth={setModalAuth} />
     </header>

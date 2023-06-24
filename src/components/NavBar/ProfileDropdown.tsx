@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { supabase } from '@/utils'
 
 export const ProfileDropdown: React.FC = () => {
   const navigate = useNavigate()
@@ -32,7 +33,7 @@ export const ProfileDropdown: React.FC = () => {
               <ul className=' last:mb-4'>
                 <li className='mb-2'>
                   <button
-                    className='active:scale-120 text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
+                    className='text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
                     onClick={() => {
                       navigate('/search?category=all&sort=Trending&q=&s=20&p=0')
                     }}
@@ -42,7 +43,7 @@ export const ProfileDropdown: React.FC = () => {
                 </li>
                 <li className='mb-2'>
                   <button
-                    className='active:scale-120 text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
+                    className='text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
                     onClick={() => {
                       navigate(
                         '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0'
@@ -54,11 +55,9 @@ export const ProfileDropdown: React.FC = () => {
                 </li>
                 <li className='mb-2'>
                   <button
-                    className='active:scale-120 text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
+                    className='text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
                     onClick={() => {
-                      navigate(
-                        '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0'
-                      )
+                      void supabase.auth.signOut()
                     }}
                   >
                     Log Out
