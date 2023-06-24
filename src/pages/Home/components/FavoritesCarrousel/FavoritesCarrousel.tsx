@@ -1,37 +1,50 @@
-import { Navigation, Pagination, Scrollbar } from 'swiper'
+import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-
 import { useFavoriteProjects } from '@/auth/hooks'
 import { useUserIdStore } from '@/store'
 import { ProjectCard } from '@/components'
 
-export const FavoritesCarrousel: React.FC = () => {
+interface FavoritesCarrouselProps {
+  width: string
+  margin: string
+}
+
+export const FavoritesCarrousel: React.FC<FavoritesCarrouselProps> = (
+  props
+) => {
   const { userId } = useUserIdStore()
   const { favoriteProjects } = useFavoriteProjects({ userId })
   console.log(favoriteProjects)
 
-  return (
-    <Swiper
-      modules={[Navigation, Pagination, Scrollbar]}
-      slidesPerView={4}
-      navigation={{
-        enabled: true,
-      }}
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
-    >
-      {favoriteProjects?.map((project) => (
-        <div key={project.id}>
-          <SwiperSlide>
-            <ProjectCard project={project} />
-          </SwiperSlide>
-        </div>
-      ))}
-    </Swiper>
-  )
+  if (favoriteProjects !== undefined && favoriteProjects.length > 0) {
+    return (
+      <div>
+        <h2 className={`${props.margin}text-3xl`}>
+          Projects you are following
+        </h2>
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={4}
+          navigation={{
+            enabled: true,
+          }}
+          spaceBetween={20}
+          className={`flex ${props.width} items-center justify-center`}
+        >
+          {favoriteProjects.map((project) => (
+            <div key={project.id}>
+              <SwiperSlide>
+                <ProjectCard project={project} />
+              </SwiperSlide>
+            </div>
+          ))}
+        </Swiper>
+      </div>
+    )
+  }
+
+  return null
 }

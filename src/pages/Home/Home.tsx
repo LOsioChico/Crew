@@ -11,7 +11,7 @@ export const Home: React.FC = () => {
       <MainCarrousel />
       <TopCategories />
       <PopularCarrousel />
-      <FavoritesCarrousel />
+      <FavoritesCarrousel width={'w-3/4'} margin={'ml-[12.5%] '} />
     </>
   )
 }
