@@ -17,7 +17,6 @@ export const FavoritesCarrousel: React.FC<FavoritesCarrouselProps> = (
 ) => {
   const { userId } = useUserIdStore()
   const { favoriteProjects } = useFavoriteProjects({ userId })
-  console.log(favoriteProjects)
 
   if (favoriteProjects !== undefined && favoriteProjects.length > 0) {
     return (
@@ -35,11 +34,9 @@ export const FavoritesCarrousel: React.FC<FavoritesCarrouselProps> = (
           className={`flex ${props.width} items-center justify-center`}
         >
           {favoriteProjects.map((project) => (
-            <div key={project.id}>
-              <SwiperSlide>
-                <ProjectCard project={project} />
-              </SwiperSlide>
-            </div>
+            <SwiperSlide key={project.id}>
+              <ProjectCard project={project} />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

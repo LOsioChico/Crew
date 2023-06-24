@@ -11,7 +11,7 @@ export const RouterProvider: React.FC = () => {
         <Route path='/projects/:id' element={<Projects />} />
         <Route path='/project-form' element={<ProjectForm />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/userDetail' element={<Profile />} />
+        <Route path='/userProfile/:id' element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>

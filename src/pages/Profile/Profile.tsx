@@ -50,11 +50,7 @@ export const Profile: React.FC = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eos
               quae tenetur nam iste esse, cupiditate delectus doloremque nemo ad
               nostrum nobis maxime vitae minus vero recusandae architecto sunt
-              praesentium. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Natus reprehenderit praesentium voluptatem, dignissimos
-              tempora tenetur. Nam autem, beatae veniam delectus id voluptas
-              quasi suscipit reprehenderit voluptatem natus recusandae, repellat
-              obcaecati!
+              praesentium.
             </p>
           </div>
         </div>

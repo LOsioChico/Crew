@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '@/utils'
+import { useUserIdStore } from '@/store'
 
 export const ProfileDropdown: React.FC = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
+  const { userId } = useUserIdStore()
 
   const toggleModal = (): void => {
     setIsOpen(!isOpen)
@@ -29,13 +31,13 @@ export const ProfileDropdown: React.FC = () => {
 
         {isOpen && (
           <>
-            <div className='absolute right-0 top-0 z-10 mt-12 flex h-auto w-[150px] flex-col items-end justify-end rounded-xl bg-primary pr-12 pt-6'>
+            <div className='absolute right-0 top-0 z-10 mt-12 flex h-auto w-[150px] flex-col items-end justify-end rounded-b-xl bg-primary pr-12 pt-6'>
               <ul className=' last:mb-4'>
                 <li className='mb-2'>
                   <button
                     className='text-white duration-300 ease-in-out hover:scale-95 hover:text-secondary'
                     onClick={() => {
-                      navigate('/search?category=all&sort=Trending&q=&s=20&p=0')
+                      navigate(`/userProfile/${userId}`)
                     }}
                   >
                     Profile
