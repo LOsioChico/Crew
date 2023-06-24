@@ -1,14 +1,12 @@
-import { type SetStateAction } from 'react'
-
 export interface AuthModalProps {
   modalAuth: 'closed' | 'login' | 'register'
-  setModalAuth: React.Dispatch<SetStateAction<AuthModalProps['modalAuth']>>
+  setModalAuth: (modalAuth: 'closed' | 'login' | 'register') => void
 }
 
 export interface LoginProps {
-  setModalAuth: React.Dispatch<SetStateAction<AuthModalProps['modalAuth']>>
+  setModalAuth: (modalAuth: 'closed' | 'login' | 'register') => void
 }
 
 export interface RegisterProps {
-  setModalAuth: React.Dispatch<SetStateAction<AuthModalProps['modalAuth']>>
+  setModalAuth: (modalAuth: 'closed' | 'login' | 'register') => void
 }
