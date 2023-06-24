@@ -1,10 +1,17 @@
+import { LoadingIcon } from '@/assets/LoadingIcon'
 import { useQueryClient } from '@tanstack/react-query'
 import { ProjectInput, ProjectInputSelect, ProjectTextArea } from './components'
 import { useProjectForm } from './hooks'
 
 export const ProjectForm: React.FC = () => {
-  const { register, handleSubmit, errors, onSubmit, isSubmitSuccessful } =
-    useProjectForm()
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    isSubmitSuccessful,
+    isSubmitting,
+  } = useProjectForm()
   const queryClient = useQueryClient()
 
   if (isSubmitSuccessful) {
@@ -70,9 +77,9 @@ export const ProjectForm: React.FC = () => {
           errors={errors}
           defaultOption='Select a category'
           options={[
-            'Tecnologia e innovación',
-            'Trabajos Creativos',
-            'Proyectos Comunitarios',
+            'Tech & Innovation',
+            'Creative Works',
+            'Community Projects',
           ]}
         />
 
@@ -89,6 +96,7 @@ export const ProjectForm: React.FC = () => {
           type='submit'
           className='bg-primary-500 mx-auto block rounded bg-primary px-4 py-2 font-bold text-white duration-300 hover:bg-secondaryDark active:scale-95'
         >
+          {isSubmitting && <LoadingIcon />}
           Create project
         </button>
       </form>
