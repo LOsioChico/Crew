@@ -29,7 +29,7 @@ export interface IUpdate {
 
 export interface ICreator {
   id: string
-  firstName: string
+  name: string
   lastName: string
   avatar: string
 }
