@@ -17,7 +17,7 @@ export const URLParams = ({ showState }: URLParamsProps): URLSearchParams => {
   params.append('q', showState.search)
   params.append('s', '20')
   params.append('p', '0')
-  params.append('country', 'Argentina')
+  params.append('country', 'all')
 
   return params
 }
