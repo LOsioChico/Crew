@@ -1,10 +1,13 @@
-import { type IProject } from '.'
-
 export interface IUser {
   id: string
-  firstName: string
+  name: string
   lastName: string
+  email: string
+  country: string
+  city: string
+  postalCode: string
+  shorDescription: string
+  aboutMe: string
   avatar: string
-  projects: IProject[]
   date: string
 }

@@ -1,9 +1,9 @@
-import { type ICreator } from '@/interfaces'
+import { type IUser } from '@/interfaces'
 import { getUserById } from '@/utils'
 import { useQuery } from '@tanstack/react-query'
 
 interface IUseUser {
-  user: ICreator | undefined
+  user: IUser | undefined
   isLoading: boolean
 }
 

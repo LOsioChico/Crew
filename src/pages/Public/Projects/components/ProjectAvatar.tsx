@@ -15,7 +15,7 @@ export const ProjectAvatar: React.FC<ProjectAvatarProps> = ({ creatorId }) => {
       />
       <div className='ml-2'>
         <h3 className='text-xl font-bold'>
-          {user?.firstName} {user?.lastName}
+          {user?.name} {user?.lastName}
         </h3>
       </div>
     </>

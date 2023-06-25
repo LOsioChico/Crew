@@ -1,10 +1,5 @@
-import {
-  MainCarrousel,
-  PopularCarrousel,
-  TopCategories,
-  FavoritesCarrousel,
-} from './components'
-
+import { MainCarrousel, PopularCarrousel, TopCategories } from './components'
+import { FavoritesCarrousel } from '@/components'
 export const Home: React.FC = () => {
   return (
     <>
