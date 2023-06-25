@@ -1,17 +1,35 @@
 import Location from '@/assets/location.svg'
 import { FavoritesCarrousel } from '../Home/components'
-import { useUserIdStore } from '@/store'
-import { CrewApi } from '@/api'
+import { About, SettingsForm } from './components'
+import { useState } from 'react'
+// import { useUserIdStore } from '@/store'
+// import { CrewApi } from '@/api'
+
+enum UserMenuOptions {
+  Profile = 'Profile',
+  Projects = 'Projects',
+  Contributions = 'Contributions',
+  Settings = 'Settings',
+}
 
 export const Profile: React.FC = () => {
   // /userRoute/userDetails?id=${id}
+  // const { userId } = useUserIdStore()
 
-  const { userId } = useUserIdStore()
+  const [userMenu, setUserMenu] = useState<UserMenuOptions>(
+    UserMenuOptions.Profile
+  )
+  console.log(userMenu)
+
+  const handleOnClick = (option: UserMenuOptions): void => {
+    setUserMenu(option)
+  }
+
   return (
     <div className='flex justify-center'>
       <div className='flex w-3/4 flex-col'>
         <div className='mt-16'>
-          <h1 className='text-3xl font-bold'>Your Name</h1>
+          <h1 className='text-3xl font-bold text-primary'>Your Name</h1>
         </div>
         <div className='mb-10 flex items-center'>
           <img
@@ -19,44 +37,74 @@ export const Profile: React.FC = () => {
             src={Location}
             alt='Location Pin'
           />
-          <h2 className='text-2xl'>Location</h2>
+          <h2 className='text-2xl text-primary'>Location</h2>
         </div>
         <div className='flex items-start justify-start'>
-          <div>
-            <p className='mr-5 text-2xl'>Profile</p>
-          </div>
-          <div>
-            <p className='mr-5 text-2xl'>Projects</p>
-          </div>
-          <div>
-            <p className='mr-5 text-2xl'>Contributions</p>
-          </div>
-          <div>
-            <p className='text-2xl'>Referrals</p>
-          </div>
-        </div>
-        <hr className='my-1 border border-black' />
-        <div className='flex h-auto w-full border border-black'>
-          <div className='w-8/12'>
-            <img
-              src='https://images.wallpaperscraft.com/image/single/bell_tower_building_paving_stones_968989_3840x2400.jpg'
-              alt=''
-              className='min-h-[220px] w-auto min-w-[355px] '
-            />
-          </div>
-          <div className='w-4/12 text-center text-4xl'>
-            <p>About me</p>
-            <p className='mt-5 text-lg'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eos
-              quae tenetur nam iste esse, cupiditate delectus doloremque nemo ad
-              nostrum nobis maxime vitae minus vero recusandae architecto sunt
-              praesentium.
+          <div className='flex-none'>
+            <p
+              className={`mr-10 text-2xl duration-300 ease-in-out ${
+                userMenu === UserMenuOptions.Profile
+                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+              }`}
+              onClick={() => {
+                handleOnClick(UserMenuOptions.Profile)
+              }}
+            >
+              {UserMenuOptions.Profile}
             </p>
           </div>
+          <div className='flex-none'>
+            <p
+              className={`mr-10 text-2xl duration-300 ease-in-out ${
+                userMenu === UserMenuOptions.Projects
+                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+              }`}
+              onClick={() => {
+                handleOnClick(UserMenuOptions.Projects)
+              }}
+            >
+              {UserMenuOptions.Projects}
+            </p>{' '}
+          </div>
+          <div className='flex-none'>
+            <p
+              className={`mr-10 text-2xl duration-300 ease-in-out ${
+                userMenu === UserMenuOptions.Contributions
+                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+              }`}
+              onClick={() => {
+                handleOnClick(UserMenuOptions.Contributions)
+              }}
+            >
+              {UserMenuOptions.Contributions}
+            </p>{' '}
+          </div>
+          <div className='flex-none'>
+            <p
+              className={`mr-10 text-2xl duration-300 ease-in-out ${
+                userMenu === UserMenuOptions.Settings
+                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+              }`}
+              onClick={() => {
+                handleOnClick(UserMenuOptions.Settings)
+              }}
+            >
+              {UserMenuOptions.Settings}
+            </p>{' '}
+          </div>
         </div>
-        <div className='mt-28'>
-          <FavoritesCarrousel width={'w-full'} margin={''} />
+        <hr className='my-3 border border-primary' />
+        <div>{userMenu === UserMenuOptions.Profile && <About />}</div>
+        <div>
+          {userMenu === UserMenuOptions.Projects && (
+            <FavoritesCarrousel width={'w-full'} margin={'mt-28'} />
+          )}
         </div>
+        <div>{userMenu === UserMenuOptions.Settings && <SettingsForm />}</div>
       </div>
     </div>
   )
