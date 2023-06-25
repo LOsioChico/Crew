@@ -1,11 +1,12 @@
+import { ProjectCard } from '@/components'
+import { useFavoriteProjects } from '@/hooks'
+import { useUserIdStore } from '@/store'
+
 import { Navigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
-import { useFavoriteProjects } from '@/auth/hooks'
-import { useUserIdStore } from '@/store'
-import { ProjectCard } from '@/components'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface FavoritesCarrouselProps {
   width: string

@@ -13,11 +13,11 @@ enum Categories {
   More = 'More',
 }
 
-enum Links {
-  Tech = '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0',
-  Creative = '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0',
-  Community = '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0',
-  More = '/search?category=all&sort=Trending&q=&s=20&p=0',
+const SearchLinks = {
+  Tech: `/search?category='Tech+&+Innovation'}`,
+  Creative: `/search?category='Creative+Works'`,
+  Community: `/search?category='Community+Projects`,
+  More: `/search`,
 }
 
 export const CategoryItem: React.FC<CategoryItemProps> = ({
@@ -27,7 +27,7 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
   return (
     <li className='mx-4'>
       <Link
-        to={Links[category]}
+        to={SearchLinks[category]}
         className='flex flex-col items-center justify-center'
       >
         <img src={icons[category]} className=' ml-auto mr-auto h-12 w-12' />

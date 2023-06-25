@@ -1,4 +1,4 @@
-import { useFavoriteProjects } from '@/auth/hooks'
+import { useFavoriteProjects } from '@/hooks'
 import { useUserIdStore } from '@/store'
 import { useEffect, useState } from 'react'
 import { isFavoriteFn } from '.'

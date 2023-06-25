@@ -11,3 +11,15 @@ export const useUserIdStore = create<IUserIdStore>((set) => ({
     set({ userId })
   },
 }))
+
+interface IModalAuthStore {
+  modalAuth: 'closed' | 'login' | 'register'
+  setModalAuth: (modalAuth: 'closed' | 'login' | 'register') => void
+}
+
+export const useModalAuthStore = create<IModalAuthStore>((set) => ({
+  modalAuth: 'closed',
+  setModalAuth: (modalAuth) => {
+    set({ modalAuth })
+  },
+}))

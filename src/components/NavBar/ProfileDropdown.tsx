@@ -1,12 +1,14 @@
+import { useUser } from '@/hooks/useUser'
+import { useUserIdStore } from '@/store'
+import { supabase } from '@/utils'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { supabase } from '@/utils'
-import { useUserIdStore } from '@/store'
 
 export const ProfileDropdown: React.FC = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const { userId } = useUserIdStore()
+  const { user } = useUser(userId)
 
   const toggleModal = (): void => {
     setIsOpen(!isOpen)
@@ -14,12 +16,24 @@ export const ProfileDropdown: React.FC = () => {
 
   return (
     <>
+      <div className='relative mr-2 h-10 w-10'>
+        <div className='absolute inset-0 overflow-hidden rounded-full'>
+          <img
+            className='h-full w-full object-cover'
+            src={
+              user?.avatar ??
+              'https://s1.abcstatics.com/media/play/2020/09/29/avatar-kE4H--620x349@abc.jpeg'
+            }
+            alt='Profile'
+          />
+        </div>
+      </div>
       <div className='relative '>
         <button
-          className='active:scale-120 flex select-none items-center rounded-md p-2 duration-300 ease-in-out hover:text-secondary'
+          className='active:scale-120 flex select-none items-center rounded-md p-2 capitalize duration-300 ease-in-out hover:text-secondary'
           onClick={toggleModal}
         >
-          Your Name
+          {user?.name ?? 'User'} {user?.lastName ?? ''}
           <span
             className={`material-symbols-outlined ml-1 text-sm duration-300 ${
               isOpen ? 'rotate-180 transform' : ''

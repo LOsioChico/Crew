@@ -36,9 +36,9 @@ export const ProjectInputSelect: React.FC<ProjectInputSelectProps> = ({
         ))}
       </select>
 
-      {errors.location != null && (
+      {errors[name] != null && (
         <span className='pl-1 text-sm text-red-600'>
-          Este campo es requerido
+          This field is required
         </span>
       )}
     </div>

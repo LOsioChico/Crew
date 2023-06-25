@@ -22,9 +22,9 @@ export const ProjectValidation = z.object({
     .min(1, 'Los días restantes de financiación deben ser mayor a 0')
     .max(365, 'Los días restantes de financiación deben ser menor a 365'),
   category: z.enum([
-    'Tecnologia e innovación',
-    'Trabajos Creativos',
-    'Proyectos Comunitarios',
+    'Tech & Innovation',
+    'Creative Works',
+    'Community Projects',
   ]),
   location: z.enum(['Argentina'], {
     required_error: 'Debes seleccionar una ubicación',

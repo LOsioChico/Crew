@@ -1,4 +1,5 @@
 import { ProjectCard } from '@/components'
+import { PublicRoutes } from '@/router/RouterProvider'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CategoriesContainer } from './components'
@@ -25,7 +26,7 @@ export const Search: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    navigate('/search?' + params.toString())
+    navigate(`${PublicRoutes.search}?` + params.toString())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate])
 
@@ -59,6 +60,7 @@ export const Search: React.FC = () => {
               className='h-8 w-1/4 rounded-l-md border-2 border-neutral-100 bg-neutral-100 pl-3 text-gray-600 outline-none duration-300 focus:border-secondaryDark'
               placeholder='Search for a project'
               ref={inputRef}
+              defaultValue={showState.search}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setShowState((prevState) => ({
