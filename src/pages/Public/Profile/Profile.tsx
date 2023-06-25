@@ -117,7 +117,7 @@ export const Profile: React.FC = () => {
             <FavoritesCarrousel width={'w-full'} margin={'mt-5'} />
           )}
         </div>
-        <div>{userMenu === UserMenuOptions.Settings && <SettingsForm />}</div>
+        <div>{userMenu === UserMenuOptions.Settings && <SettingsForm user={user} />}</div>
       </div>
     </div>
   )

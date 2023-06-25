@@ -6,7 +6,7 @@ export interface IUser {
   country: string
   city: string
   postalCode: string
-  shorDescription: string
+  shortDescription: string
   aboutMe: string
   avatar: string
   date: string
