@@ -1,3 +1,4 @@
+import { LoadingIcon } from '@/assets/LoadingIcon'
 import { useUser } from '@/hooks/useUser'
 import { useUserIdStore } from '@/store'
 import { supabase } from '@/utils'
@@ -12,6 +13,10 @@ export const ProfileDropdown: React.FC = () => {
 
   const toggleModal = (): void => {
     setIsOpen(!isOpen)
+  }
+
+  if (user === undefined) {
+    return <LoadingIcon />
   }
 
   return (
@@ -33,7 +38,7 @@ export const ProfileDropdown: React.FC = () => {
           className='active:scale-120 flex select-none items-center rounded-md p-2 capitalize duration-300 ease-in-out hover:text-secondary'
           onClick={toggleModal}
         >
-          {user?.name ?? 'User'} {user?.lastName ?? ''}
+          {user?.name === '' ? 'User' : user?.name} {user?.lastName}
           <span
             className={`material-symbols-outlined ml-1 text-sm duration-300 ${
               isOpen ? 'rotate-180 transform' : ''

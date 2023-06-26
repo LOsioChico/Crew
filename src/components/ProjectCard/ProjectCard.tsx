@@ -9,15 +9,15 @@ interface ProjectCardProps {
 }
 
 export const CategoryRedirect = {
-  'Tech & Innovation': `${PublicRoutes.search}?category='Tech+%26+Innovation'`,
-  'Creative Works': `${PublicRoutes.search}?category='Creative+Works'`,
-  'Community Projects': `${PublicRoutes.search}?category='Community+Projects`,
+  'Tech & Innovation': `${PublicRoutes.search}?category=Tech+%26+Innovation`,
+  'Creative Works': `${PublicRoutes.search}?category=Creative+Works`,
+  'Community Projects': `${PublicRoutes.search}?category=Community+Projects`,
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const navigate = useNavigate()
   return (
-    <li className='h-[650px] cursor-default py-8'>
+    <li className='h-[650px] w-72 cursor-default py-8'>
       <div className='group flex h-full flex-col rounded-2xl border shadow-md duration-300 hover:scale-95 hover:shadow-xl'>
         <div
           className='h-1/2 cursor-pointer'
@@ -47,7 +47,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <h3 className='mb-1 mt-2 text-xl font-semibold duration-1000'>
               {project.title}
             </h3>
-            <p className='text-sm'>
+            <p className='h-[60px] overflow-hidden text-sm'>
               {project.description.length > 99
                 ? project.description.slice(0, 99).concat('...')
                 : project.description}

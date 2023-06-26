@@ -45,7 +45,7 @@ export const Explorer: React.FC = () => {
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                   onClick={() => {
                     navigate(
-                      `${PublicRoutes.search}?category=Tech+&+Innovation`
+                      `${PublicRoutes.search}?category=Tech+%26+Innovation`
                     )
                   }}
                 >
