@@ -3,6 +3,7 @@ import {
   LoginValidation,
   type LoginValidationType,
 } from '@/schemas/LoginValidation'
+import { useModalAuthStore } from '@/store'
 import { supabase } from '@/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, type SubmitHandler } from 'react-hook-form'
@@ -18,6 +19,8 @@ export const useLoginForm = (): ILoginForm => {
     mode: 'onBlur',
   })
 
+  const { setModalAuth } = useModalAuthStore()
+
   const onSubmit: SubmitHandler<LoginValidationType> = async (data) => {
     const { error } = await supabase.auth.signInWithPassword({
       email: data.email,
@@ -29,7 +32,8 @@ export const useLoginForm = (): ILoginForm => {
         type: 'manual',
         message: error.message,
       })
-      console.error(error)
+    } else {
+      setModalAuth('closed')
     }
   }
 
