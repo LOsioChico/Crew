@@ -14,7 +14,7 @@ enum Categories {
 }
 
 const SearchLinks = {
-  Tech: `/search?category='Tech+&+Innovation'}`,
+  Tech: `/search?category='Tech+%26+Innovation'}`,
   Creative: `/search?category='Creative+Works'`,
   Community: `/search?category='Community+Projects`,
   More: `/search`,

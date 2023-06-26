@@ -1,5 +1,5 @@
 import { ProjectCard } from '@/components'
-import { usePopularProjects } from '../../hooks/usePopularProjects'
+import { usePopularProjects } from '../../hooks'
 
 export const PopularCarrousel: React.FC = () => {
   const { projects } = usePopularProjects()
@@ -19,12 +19,9 @@ export const PopularCarrousel: React.FC = () => {
             </div>
           </div>
         ) : (
-          projects?.map((project) => {
-            return (
-              <div key={project.id} className='w-1/4'>
-                <ProjectCard project={project} />
-              </div>
-            )
+          projects?.map((project, index) => {
+            if (index > 9) return undefined
+            return <ProjectCard key={project.id} project={project} />
           })
         )}
       </ul>
