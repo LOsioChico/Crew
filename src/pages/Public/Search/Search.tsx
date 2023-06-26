@@ -1,7 +1,7 @@
 import { ProjectCard } from '@/components'
 import { PublicRoutes } from '@/router/RouterProvider'
 import { useEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { CategoriesContainer } from './components'
 import { useSearch } from './hooks'
 import { type ShowState } from './interface'
@@ -14,7 +14,6 @@ import {
 import { handleSortSelect } from './utils/filtersHandler'
 
 export const Search: React.FC = () => {
-  const location = useLocation()
   const [showState, setShowState] = useState<ShowState>({
     search: getSearchQuery(location.search) ?? '',
     category: getCategoryQuery(location.search) ?? 'All Projects',
@@ -28,7 +27,7 @@ export const Search: React.FC = () => {
   useEffect(() => {
     navigate(`${PublicRoutes.search}?` + params.toString())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate])
+  }, [navigate, showState])
 
   return (
     <div className='flex flex-col bg-gray-200'>
