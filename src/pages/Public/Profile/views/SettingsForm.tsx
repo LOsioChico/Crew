@@ -7,6 +7,8 @@ import {
   UserValidation,
   type UserSettingsFormType,
 } from '@/schemas/UserValidation'
+import { CrewApi } from '@/api'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface SettingsProps {
   user: IUser | undefined
@@ -24,17 +26,28 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
   })
 
   useEffect(() => {
-    setValue('name', props.user?.name ?? '')
-    setValue('lastName', props.user?.lastName ?? '')
-    setValue('email', props.user?.email ?? '')
-    setValue('country', props.user?.country ?? '')
-    setValue('city', props.user?.city ?? '')
-    setValue('aboutMe', props.user?.aboutMe ?? '')
-    setValue('shortDescription', props.user?.shortDescription ?? '')
+    setValue('updateName', props.user?.name ?? '')
+    setValue('updateLastName', props.user?.lastName ?? '')
+    setValue('updateEmail', props.user?.email ?? '')
+    setValue('updateCountry', props.user?.country ?? '')
+    setValue('updateCity', props.user?.city ?? '')
+    setValue('updateAboutMe', props.user?.aboutMe ?? '')
+    setValue('updateShortDescription', props.user?.shortDescription ?? '')
   }, [])
 
+  const queryClient = useQueryClient()
+
   const onSubmit = async (data: UserSettingsFormType): Promise<void> => {
-    console.log(data)
+    try {
+      const response = await CrewApi.put('userRoute/updateUserInfo', {
+        ...data,
+        id: props.user?.id,
+      })
+      void queryClient.invalidateQueries(['user', props.user?.id])
+      console.log(response.data)
+    } catch (error) {
+      console.log('No se pudieron actualizar los datos', error)
+    }
   }
 
   return (
@@ -48,12 +61,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             type='text'
             id='name'
             placeholder='Your name'
-            {...register('name')}
+            {...register('updateName')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.name != null && (
+          {errors.updateName != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.name?.message ?? 'This field is required'}
+              {errors.updateName?.message ?? 'This field is required'}
             </span>
           )}
         </div>
@@ -65,12 +78,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             type='text'
             id='lastName'
             placeholder='Your last name'
-            {...register('lastName')}
+            {...register('updateLastName')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.lastName != null && (
+          {errors.updateLastName != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.lastName?.message ?? 'This field is required'}
+              {errors.updateLastName?.message ?? 'This field is required'}
             </span>
           )}
         </div>
@@ -82,12 +95,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             type='text'
             id='email'
             placeholder='Your email'
-            {...register('email')}
+            {...register('updateEmail')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.email != null && (
+          {errors.updateEmail != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.email?.message ?? 'Please enter a valid email'}
+              {errors.updateEmail?.message ?? 'Please enter a valid email'}
             </span>
           )}
         </div>
@@ -99,12 +112,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             type='text'
             id='country'
             placeholder='Your country'
-            {...register('country')}
+            {...register('updateCountry')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.country != null && (
+          {errors.updateCountry != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.country?.message ?? 'This field is required'}
+              {errors.updateCountry?.message ?? 'This field is required'}
             </span>
           )}
         </div>
@@ -116,12 +129,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             type='text'
             id='city'
             placeholder='Your city...'
-            {...register('city')}
+            {...register('updateCity')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.city != null && (
+          {errors.updateCity != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.city?.message ?? 'This field is required'}
+              {errors.updateCity?.message ?? 'This field is required'}
             </span>
           )}
         </div>
@@ -132,12 +145,12 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
           <textarea
             id='aboutMe'
             placeholder='Tell something about your self'
-            {...register('aboutMe')}
+            {...register('updateAboutMe')}
             className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.aboutMe != null && (
+          {errors.updateAboutMe != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.aboutMe?.message ?? 'This field is required'}
+              {errors.updateAboutMe?.message ?? 'This field is required'}
             </span>
           )}
         </div>
@@ -148,12 +161,13 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
           <textarea
             id='shortDescription'
             placeholder='Tell something about your self'
-            {...register('shortDescription')}
+            {...register('updateShortDescription')}
             className='h-20 w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
-          {errors.shortDescription != null && (
+          {errors.updateShortDescription != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.shortDescription?.message ?? 'This field is required'}
+              {errors.updateShortDescription?.message ??
+                'This field is required'}
             </span>
           )}
         </div>

@@ -1,6 +1,5 @@
 import Location from '@/assets/location.svg'
-import { FavoritesCarrousel } from '@/components' 
-import { About, SettingsForm } from './views'
+import { About, SettingsForm, UserProjectsFav, Contributions } from './views'
 import { useState } from 'react'
 import { useUserIdStore } from '@/store'
 import { useUser } from '@/hooks/useUser'
@@ -105,19 +104,19 @@ export const Profile: React.FC = () => {
         </div>
         <hr className='my-3 border border-primary' />
         <div>
-          {userMenu === UserMenuOptions.Profile && (
-            <About
-              aboutMe={user?.aboutMe ?? 'About me description...'}
-              avatar={user?.avatar ?? 'Invalid image'}
-            />
+          {userMenu === UserMenuOptions.Profile && <About user={user} />}
+        </div>
+        <div>
+          {userMenu === UserMenuOptions.Projects && <UserProjectsFav />}
+        </div>
+        <div>
+          {userMenu === UserMenuOptions.Settings && (
+            <SettingsForm user={user} />
           )}
         </div>
         <div>
-          {userMenu === UserMenuOptions.Projects && (
-            <FavoritesCarrousel width={'w-full'} margin={'mt-5'} />
-          )}
+          {userMenu === UserMenuOptions.Contributions && <Contributions />}
         </div>
-        <div>{userMenu === UserMenuOptions.Settings && <SettingsForm user={user} />}</div>
       </div>
     </div>
   )

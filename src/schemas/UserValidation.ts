@@ -2,15 +2,15 @@ import { z } from 'zod'
 const emailRegex = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
 
 export const UserValidation = z.object({
-    name: z
+  updateName: z
     .string()
     .min(3, 'El nombre debe tener al menos 3 caracteres')
-    .max(10, 'El nombre debe tener menos de 10 caracteres'),
-    lastName: z
+    .max(15, 'El nombre debe tener menos de 10 caracteres'),
+    updateLastName: z
     .string()
     .min(3, 'El apellido debe tener al menos 3 caracteres')
-    .max(10, 'El apellido debe tener menos de 10 caracteres'),
-    email: z
+    .max(15, 'El apellido debe tener menos de 10 caracteres'),
+    updateEmail: z
     .string()
     .min(5, 'El correo electrónico debe tener al menos 5 caracteres')
     .max(30, 'El correo electrónico debe tener menos de 30 caracteres')
@@ -18,22 +18,22 @@ export const UserValidation = z.object({
       message: 'Debe proporcionar un correo electrónico válido',
       path: ['email'],
     }),    
-    country: z  
+    updateCountry: z  
     .string()
     .min(3, 'El país debe tener al menos 3 caracteres')
-    .max(10, 'El país debe tener menos de 10 caracteres'),
-    city: z  
+    .max(15, 'El país debe tener menos de 10 caracteres'),
+    updateCity: z  
     .string()
     .min(3, 'La ciudad debe tener al menos 3 caracteres')
-    .max(10, 'La ciudad debe tener menos de 10 caracteres'),
-    aboutMe: z
+    .max(20, 'La ciudad debe tener menos de 10 caracteres'),
+    updateAboutMe: z
     .string()
     .min(10, 'La descripción debe tener al menos 10 caracteres')
     .max(100, 'La descripción debe tener menos de 100 caracteres'),
-  shortDescription: z
+    updateShortDescription: z
     .string()
     .min(3, 'La descripción corta debe tener al menos 3 caracteres')
-    .max(40, 'La descripción corta debe tener menos de 40 caracteres'),
+    .max(100, 'La descripción corta debe tener menos de 40 caracteres'),
 })
 
 export type UserSettingsFormType = z.infer<typeof UserValidation>
