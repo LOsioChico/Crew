@@ -18,7 +18,7 @@ export const useFavoriteHandler = ({
 }: UseFavoriteHandlerProps): IUseFavoriteHandler => {
   const { userId } = useUserIdStore()
   const { favoriteProjects, addFavoriteProject, removeFavoriteProject } =
-    useFavoriteProjects({ userId })
+    useFavoriteProjects(userId)
   const favorite = isFavoriteFn(favoriteProjects, projectId)
   const [isFavorite, setIsFavorite] = useState(favorite)
 
