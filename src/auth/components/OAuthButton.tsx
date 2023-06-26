@@ -12,7 +12,7 @@ export const OAuthButton: React.FC<OAuthButtonProps> = ({ provider }) => {
       onClick={() => {
         void signInWithOAuth({ provider })
       }}
-      className='mx-auto mb-1 mt-3 flex items-center justify-center rounded-md bg-primary duration-300 hover:bg-secondaryDark'
+      className='mx-auto mb-1 mt-4 flex items-center justify-center'
     >
       <img
         src={ProvidersImages[provider]}

@@ -1,3 +1,4 @@
+import { useUserIdStore } from '@/store'
 import { useFavoriteHandler } from '@/utils'
 
 interface FavoriteButtonProps {
@@ -9,9 +10,11 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
 }) => {
   const { isFavorite, addFavoriteProject, removeFavoriteProject } =
     useFavoriteHandler({ projectId })
+  const { userId } = useUserIdStore()
   return (
     <button
       onClick={() => {
+        if (userId === '') return
         if (isFavorite) {
           void removeFavoriteProject(projectId)
         } else {
@@ -20,7 +23,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       }}
     >
       <span
-        className={`material-symbols-outlined duration-500 hover:scale-105 active:scale-95 ${
+        className={`material-symbols-outlined duration-500 hover:scale-125 active:scale-95 ${
           isFavorite ? 'text-pink-300' : 'text-secondary hover:text-pink-300'
         }`}
       >

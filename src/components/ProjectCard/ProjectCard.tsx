@@ -1,4 +1,5 @@
 import { type ProjectCardType } from '@/data'
+import { PublicRoutes } from '@/router/RouterProvider'
 import { numberToUSD } from '@/utils'
 import { useNavigate } from 'react-router-dom'
 import { FavoriteButton } from '.'
@@ -7,21 +8,21 @@ interface ProjectCardProps {
   project: ProjectCardType
 }
 
-export enum CategoryRedirect {
-  'Tech & Innovation' = '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0',
-  'Creative Works' = '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0',
-  'Community Projects' = '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0',
+export const CategoryRedirect = {
+  'Tech & Innovation': `${PublicRoutes.search}?category=Tech+%26+Innovation`,
+  'Creative Works': `${PublicRoutes.search}?category=Creative+Works`,
+  'Community Projects': `${PublicRoutes.search}?category=Community+Projects`,
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const navigate = useNavigate()
   return (
-    <li className='h-[650px] w-1/4 cursor-default py-8'>
-      <div className='group flex h-full flex-col rounded-2xl border shadow-md duration-300 hover:scale-105 hover:shadow-xl'>
+    <li className='h-[650px] w-72 cursor-default py-8'>
+      <div className='group flex h-full flex-col rounded-2xl border shadow-md duration-300 hover:scale-95 hover:shadow-xl'>
         <div
           className='h-1/2 cursor-pointer'
           onClick={() => {
-            navigate(`/projects/${project.id}`)
+            navigate(`${PublicRoutes.projects}/${project.id}`)
           }}
         >
           <img
@@ -40,13 +41,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <div
             className='cursor-pointer'
             onClick={() => {
-              navigate(`/projects/${project.id}`)
+              navigate(`${PublicRoutes.projects}/${project.id}`)
             }}
           >
             <h3 className='mb-1 mt-2 text-xl font-semibold duration-1000'>
               {project.title}
             </h3>
-            <p className='text-sm'>
+            <p className='h-[60px] overflow-hidden text-sm'>
               {project.description.length > 99
                 ? project.description.slice(0, 99).concat('...')
                 : project.description}

@@ -1,3 +1,4 @@
+import { PublicRoutes } from '@/router/RouterProvider'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -33,7 +34,7 @@ export const Explorer: React.FC = () => {
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                   onClick={() => {
-                    navigate('/search?category=all&sort=Trending&q=&s=20&p=0')
+                    navigate(PublicRoutes.search)
                   }}
                 >
                   All Projects
@@ -44,7 +45,7 @@ export const Explorer: React.FC = () => {
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                   onClick={() => {
                     navigate(
-                      '/search?category=Tech+%26+Innovation&sort=Trending&q=&s=20&p=0'
+                      `${PublicRoutes.search}?category=Tech+%26+Innovation`
                     )
                   }}
                 >
@@ -55,9 +56,7 @@ export const Explorer: React.FC = () => {
                 <button
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                   onClick={() => {
-                    navigate(
-                      '/search?category=Creative+Works&sort=Trending&q=&s=20&p=0'
-                    )
+                    navigate(`${PublicRoutes.search}?category=Creative+Works`)
                   }}
                 >
                   Creative Works
@@ -68,7 +67,7 @@ export const Explorer: React.FC = () => {
                   className='text-white duration-300 ease-in-out hover:scale-105 hover:text-secondary active:scale-95'
                   onClick={() => {
                     navigate(
-                      '/search?category=Community+Projects&sort=Trending&q=&s=20&p=0'
+                      `${PublicRoutes.search}?category=Community+Projects`
                     )
                   }}
                 >

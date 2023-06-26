@@ -2,14 +2,18 @@ import { Logo } from '@/assets/Logo'
 import { Auth } from '@/auth'
 import { useAuthHandler } from '@/auth/hooks'
 import { Explorer } from '@/components/NavBar/Explorer'
-import { supabase } from '@/utils'
+import { PrivateRoutes, PublicRoutes } from '@/router/RouterProvider'
+import { useModalAuthStore, useUserIdStore } from '@/store'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SearchBar } from '.'
+import { ProfileDropdown } from './ProfileDropdown'
 
 export const NavBar: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation().pathname
-  const { session, modalAuth, setModalAuth } = useAuthHandler()
+  useAuthHandler()
+  const { userId } = useUserIdStore()
+  const { modalAuth, setModalAuth } = useModalAuthStore()
 
   return (
     <header>
@@ -24,19 +28,19 @@ export const NavBar: React.FC = () => {
             <Logo />
           </div>
 
-          {location !== '/search' && <Explorer />}
+          {location !== PublicRoutes.search && <Explorer />}
         </div>
-        {location !== '/search' && <SearchBar />}
+        {location !== PublicRoutes.search && <SearchBar />}
         <div className='mr-8 flex items-center gap-5 '>
           <div className={'border-r border-gray-400'}>
             <Link
               className='cursor-pointer select-none pr-5 duration-300 hover:text-secondary active:scale-95'
-              to='/project-form'
+              to={PrivateRoutes.createProject}
             >
               Start a project
             </Link>
           </div>
-          {!session && (
+          {userId.length === 0 && (
             <>
               <button
                 className='cursor-pointer select-none duration-300 hover:text-secondary active:scale-95'
@@ -57,16 +61,11 @@ export const NavBar: React.FC = () => {
               </button>
             </>
           )}
-
-          {session && (
-            <button
-              className='cursor-pointer select-none duration-300 hover:scale-105 hover:text-secondary'
-              onClick={() => {
-                void supabase.auth.signOut()
-              }}
-            >
-              Log Out
-            </button>
+          {userId.length > 0 && (
+            <div className='flex items-center'>
+              
+              <ProfileDropdown />
+            </div>
           )}
         </div>
       </nav>
