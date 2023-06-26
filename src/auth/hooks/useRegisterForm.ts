@@ -4,6 +4,7 @@ import {
   RegisterValidation,
   type RegisterValidationType,
 } from '@/schemas/RegisterValidation'
+import { useModalAuthStore } from '@/store'
 import { supabase } from '@/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, type SubmitHandler } from 'react-hook-form'
@@ -18,6 +19,8 @@ export const useRegisterForm = (): IRegisterForm => {
     resolver: zodResolver(RegisterValidation),
     mode: 'onBlur',
   })
+
+  const { setModalAuth } = useModalAuthStore()
 
   const onSubmit: SubmitHandler<RegisterValidationType> = async (data) => {
     try {
@@ -40,16 +43,18 @@ export const useRegisterForm = (): IRegisterForm => {
       })
 
       if (loginError != null) throw loginError
+
+      setModalAuth('closed')
+
+      await CrewApi.post('userRoute/register', {
+        id: (await supabase.auth.getUser()).data.user?.id,
+        email: data.email,
+        name: data.firstName,
+        lastName: data.lastName,
+      })
     } catch (error) {
       console.log(error)
     }
-
-    await CrewApi.post('userRoute/register', {
-      id: (await supabase.auth.getUser()).data.user?.id,
-      email: data.email,
-      name: data.firstName,
-      lastName: data.lastName,
-    })
   }
 
   return { register, handleSubmit, onSubmit, errors, isSubmitting }
