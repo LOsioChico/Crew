@@ -4,7 +4,7 @@ import { useUserIdStore } from '@/store'
 
 export const UserProjectsFav: React.FC = () => {
   const { userId } = useUserIdStore()
-  const { favoriteProjects } = useFavoriteProjects({ userId })
+  const { favoriteProjects } = useFavoriteProjects(userId)
   if (favoriteProjects !== undefined && favoriteProjects.length > 0) {
     return (
       <div>

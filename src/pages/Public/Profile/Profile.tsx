@@ -1,8 +1,8 @@
 import Location from '@/assets/location.svg'
-import { About, SettingsForm, UserProjectsFav, Contributions } from './views'
-import { useState } from 'react'
-import { useUserIdStore } from '@/store'
 import { useUser } from '@/hooks/useUser'
+import { useUserIdStore } from '@/store'
+import { useState } from 'react'
+import { About, Contributions, SettingsForm, UserProjectsFav } from './views'
 
 enum UserMenuOptions {
   Profile = 'Profile',
@@ -49,8 +49,8 @@ export const Profile: React.FC = () => {
             <p
               className={`mr-10 text-2xl duration-300 ease-in-out ${
                 userMenu === UserMenuOptions.Profile
-                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
               }`}
               onClick={() => {
                 handleOnClick(UserMenuOptions.Profile)
@@ -63,8 +63,8 @@ export const Profile: React.FC = () => {
             <p
               className={`mr-10 text-2xl duration-300 ease-in-out ${
                 userMenu === UserMenuOptions.Projects
-                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
               }`}
               onClick={() => {
                 handleOnClick(UserMenuOptions.Projects)
@@ -77,8 +77,8 @@ export const Profile: React.FC = () => {
             <p
               className={`mr-10 text-2xl duration-300 ease-in-out ${
                 userMenu === UserMenuOptions.Contributions
-                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
               }`}
               onClick={() => {
                 handleOnClick(UserMenuOptions.Contributions)
@@ -91,8 +91,8 @@ export const Profile: React.FC = () => {
             <p
               className={`mr-10 text-2xl duration-300 ease-in-out ${
                 userMenu === UserMenuOptions.Settings
-                  ? 'font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
+                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
               }`}
               onClick={() => {
                 handleOnClick(UserMenuOptions.Settings)
