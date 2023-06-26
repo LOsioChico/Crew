@@ -1,6 +1,6 @@
 import { ProjectCard } from '@/components'
 import { useFavoriteProjects } from '@/hooks'
-import { useUserIdStore } from '@/store'
+import { useParams } from 'react-router-dom'
 
 import { Navigation } from 'swiper'
 import 'swiper/css'
@@ -11,13 +11,19 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 interface FavoritesCarrouselProps {
   width: string
   margin: string
+  userId?: string
+}
+
+interface UserParams {
+  id: string
 }
 
 export const FavoritesCarrousel: React.FC<FavoritesCarrouselProps> = (
   props
 ) => {
-  const { userId } = useUserIdStore()
-  const { favoriteProjects } = useFavoriteProjects({ userId })
+  const { id: userId } = useParams<keyof UserParams>() as UserParams
+  const userIdToUse = props?.userId ?? userId
+  const { favoriteProjects } = useFavoriteProjects(userIdToUse)
 
   if (favoriteProjects !== undefined && favoriteProjects.length > 0) {
     return (
