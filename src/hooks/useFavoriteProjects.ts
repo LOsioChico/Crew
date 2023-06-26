@@ -1,30 +1,13 @@
 import { CrewApi } from '@/api'
 import { type IProject } from '@/interfaces'
+import { getFavoriteProjects } from '@/utils'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 export interface FavoriteProjectsProps {
   userId: string
 }
 
-export type IGetFavoriteProjects = ({
-  userId,
-}: FavoriteProjectsProps) => Promise<IProject[]>
-
-export const getFavoriteProjects: IGetFavoriteProjects = async ({ userId }) => {
-  if (userId.length === 0) return []
-
-  const { data } = await CrewApi.get<IProject[]>(
-    `/userRoute/getAllUsersFavorites?userId=${userId}`
-  )
-
-  return data
-}
-
-export interface UseFavoriteProjectsProps {
-  userId: string
-}
-
-export type IUseFavoriteProjects = ({ userId }: UseFavoriteProjectsProps) => {
+export type IUseFavoriteProjects = (userId: string) => {
   favoriteProjects: IProject[] | undefined
   addFavoriteProject: (projectId: string) => Promise<void>
   removeFavoriteProject: (projectId: string) => Promise<void>
@@ -32,7 +15,7 @@ export type IUseFavoriteProjects = ({ userId }: UseFavoriteProjectsProps) => {
   error: unknown
 }
 
-export const useFavoriteProjects: IUseFavoriteProjects = ({ userId }) => {
+export const useFavoriteProjects: IUseFavoriteProjects = (userId) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['favoriteProjects', userId],
     queryFn: async () => await getFavoriteProjects({ userId }),
