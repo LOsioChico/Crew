@@ -11,3 +11,7 @@ export interface IUser {
   avatar: string
   date: string
 }
+
+export interface IUserWithAvatar extends Omit<IUser, 'avatar'> {
+  avatar: File
+}
