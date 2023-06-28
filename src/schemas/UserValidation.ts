@@ -35,6 +35,16 @@ export const UserValidation = z.object({
     .string()
     .min(3, 'La descripción corta debe tener al menos 3 caracteres')
     .max(100, 'La descripción corta debe tener menos de 40 caracteres'),
+  updateProfilePicture: z.custom<File[]>(
+    (files) => {
+      if (files instanceof FileList) {
+        return files
+      }
+    },
+    {
+      message: 'Debe proporcionar una imagen',
+    }
+  ),
 })
 
 export type UserSettingsFormType = z.infer<typeof UserValidation>
