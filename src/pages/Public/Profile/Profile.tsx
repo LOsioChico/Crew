@@ -2,6 +2,7 @@ import Location from '@/assets/location.svg'
 import { useUser } from '@/hooks/useUser'
 import { useUserIdStore } from '@/store'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { About, Contributions, SettingsForm, UserProjectsFav } from './views'
 
 enum UserMenuOptions {
@@ -11,9 +12,14 @@ enum UserMenuOptions {
   Settings = 'Settings',
 }
 
+interface UserParams {
+  id: string
+}
+
 export const Profile: React.FC = () => {
   const { userId } = useUserIdStore()
-  const { user } = useUser(userId)
+  const { id } = useParams<keyof UserParams>() as UserParams
+  const { user } = useUser(id)
 
   const [userMenu, setUserMenu] = useState<UserMenuOptions>(
     UserMenuOptions.Profile
@@ -87,36 +93,30 @@ export const Profile: React.FC = () => {
               {UserMenuOptions.Contributions}
             </p>{' '}
           </div>
-          <div className='flex-none'>
-            <p
-              className={`mr-10 text-2xl duration-300 ease-in-out ${
-                userMenu === UserMenuOptions.Settings
-                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
-              }`}
-              onClick={() => {
-                handleOnClick(UserMenuOptions.Settings)
-              }}
-            >
-              {UserMenuOptions.Settings}
-            </p>{' '}
-          </div>
-        </div>
-        <hr className='my-3 border border-primary' />
-        <div>
-          {userMenu === UserMenuOptions.Profile && <About user={user} />}
-        </div>
-        <div>
-          {userMenu === UserMenuOptions.Projects && <UserProjectsFav />}
-        </div>
-        <div>
-          {userMenu === UserMenuOptions.Settings && (
-            <SettingsForm user={user} />
+          {id === userId && (
+            <div className='flex-none'>
+              <p
+                className={`mr-10 text-2xl duration-300 ease-in-out ${
+                  userMenu === UserMenuOptions.Settings
+                    ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
+                    : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
+                }`}
+                onClick={() => {
+                  handleOnClick(UserMenuOptions.Settings)
+                }}
+              >
+                {UserMenuOptions.Settings}
+              </p>{' '}
+            </div>
           )}
         </div>
-        <div>
-          {userMenu === UserMenuOptions.Contributions && <Contributions />}
-        </div>
+        <hr className='my-3 border border-primary' />
+        {userMenu === UserMenuOptions.Profile && <About user={user} />}
+        {userMenu === UserMenuOptions.Projects && <UserProjectsFav />}
+        {userMenu === UserMenuOptions.Contributions && <Contributions />}
+        {id === userId &&
+          userMenu === UserMenuOptions.Settings &&
+          user !== undefined && <SettingsForm user={user} />}
       </div>
     </div>
   )
