@@ -1,159 +1,135 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useForm } from 'react-hook-form'
+import { CrewApi } from '@/api'
+import { LoadingIcon } from '@/assets/LoadingIcon'
 import { type IUser } from '@/interfaces'
-import { useEffect } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
   UserValidation,
   type UserSettingsFormType,
 } from '@/schemas/UserValidation'
-import { CrewApi } from '@/api'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { SettingsFormInput } from '.'
 
 interface SettingsProps {
-  user: IUser | undefined
+  user: IUser
 }
 
-export const SettingsForm: React.FC<SettingsProps> = (props) => {
+export const SettingsForm: React.FC<SettingsProps> = ({ user }) => {
+  const navigate = useNavigate()
   const {
     setValue,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm<UserSettingsFormType>({
     mode: 'onBlur',
     resolver: zodResolver(UserValidation),
   })
 
   useEffect(() => {
-    setValue('updateName', props.user?.name ?? '')
-    setValue('updateLastName', props.user?.lastName ?? '')
-    setValue('updateEmail', props.user?.email ?? '')
-    setValue('updateCountry', props.user?.country ?? '')
-    setValue('updateCity', props.user?.city ?? '')
-    setValue('updateAboutMe', props.user?.aboutMe ?? '')
-    setValue('updateShortDescription', props.user?.shortDescription ?? '')
+    setValue('updateName', user.name ?? '')
+    setValue('updateLastName', user.lastName ?? '')
+    setValue('updateEmail', user.email ?? '')
+    setValue('updateCountry', user.country ?? '')
+    setValue('updateCity', user.city ?? '')
+    setValue('updateAboutMe', user.aboutMe ?? '')
+    setValue('updateShortDescription', user.shortDescription ?? '')
   }, [])
 
   const queryClient = useQueryClient()
 
   const onSubmit = async (data: UserSettingsFormType): Promise<void> => {
     try {
-      const response = await CrewApi.put('userRoute/updateUserInfo', {
+      await CrewApi.put('userRoute/updateUserInfo', {
+        id: user.id,
         ...data,
-        id: props.user?.id,
       })
-      void queryClient.invalidateQueries(['user', props.user?.id])
-      console.log(response.data)
+
+      if (data.updateProfilePicture.length === 1) {
+        await CrewApi.put(
+          'userRoute/updateUserInfo',
+          {
+            id: user.id,
+            file: data.updateProfilePicture[0],
+          },
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+      }
+
+      void queryClient.invalidateQueries(['user', user.id])
     } catch (error) {
       console.log('No se pudieron actualizar los datos', error)
     }
   }
 
+  if (isSubmitSuccessful) {
+    navigate(0)
+  }
+
   return (
     <div className='relative h-auto w-full'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='name' className='mb-2 block'>
-            Name:
-          </label>
-          <input
-            type='text'
-            id='name'
-            placeholder='Your name'
-            {...register('updateName')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateName != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateName?.message ?? 'This field is required'}
-            </span>
-          )}
-        </div>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='lastName' className='mb-2 block'>
-            Last Name:
-          </label>
-          <input
-            type='text'
-            id='lastName'
-            placeholder='Your last name'
-            {...register('updateLastName')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateLastName != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateLastName?.message ?? 'This field is required'}
-            </span>
-          )}
-        </div>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='email' className='mb-2 block'>
-            Email:
-          </label>
-          <input
-            type='text'
-            id='email'
-            placeholder='Your email'
-            {...register('updateEmail')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateEmail != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateEmail?.message ?? 'Please enter a valid email'}
-            </span>
-          )}
-        </div>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='country' className='mb-2 block'>
-            Country:
-          </label>
-          <input
-            type='text'
-            id='country'
-            placeholder='Your country'
-            {...register('updateCountry')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateCountry != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateCountry?.message ?? 'This field is required'}
-            </span>
-          )}
-        </div>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='city' className='mb-2 block'>
-            City:
-          </label>
-          <input
-            type='text'
-            id='city'
-            placeholder='Your city...'
-            {...register('updateCity')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateCity != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateCity?.message ?? 'This field is required'}
-            </span>
-          )}
-        </div>
-        <div className='mb-4 flex flex-col'>
-          <label htmlFor='aboutMe' className='mb-2 block'>
-            About Me:
-          </label>
-          <textarea
-            id='aboutMe'
-            placeholder='Tell something about your self'
-            {...register('updateAboutMe')}
-            className='w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
-          />
-          {errors.updateAboutMe != null && (
-            <span className='ml-3 text-sm font-semibold text-red-600'>
-              {errors.updateAboutMe?.message ?? 'This field is required'}
-            </span>
-          )}
-        </div>
+        <SettingsFormInput
+          label='Name'
+          name='updateName'
+          type='text'
+          placeholder='Your name'
+          register={register}
+          error={errors.updateName}
+        />
+
+        <SettingsFormInput
+          label='Last Name'
+          name='updateLastName'
+          type='text'
+          placeholder='Your last name'
+          register={register}
+          error={errors.updateLastName}
+        />
+
+        <SettingsFormInput
+          label='Email'
+          name='updateEmail'
+          type='text'
+          placeholder='Your email'
+          register={register}
+          error={errors.updateEmail}
+        />
+
+        <SettingsFormInput
+          label='Country'
+          name='updateCountry'
+          type='text'
+          placeholder='Your country'
+          register={register}
+          error={errors.updateCountry}
+        />
+
+        <SettingsFormInput
+          label='City'
+          name='updateCity'
+          type='text'
+          placeholder='Your city'
+          register={register}
+          error={errors.updateCity}
+        />
+
+        <SettingsFormInput
+          label='About Me'
+          name='updateAboutMe'
+          type='text'
+          placeholder='Tell something about your self'
+          register={register}
+          error={errors.updateAboutMe}
+        />
+
         <div className='mb-4 flex flex-col'>
           <label htmlFor='shortDescription' className='mb-2 block'>
             Short Description:
@@ -171,25 +147,31 @@ export const SettingsForm: React.FC<SettingsProps> = (props) => {
             </span>
           )}
         </div>
+        <div className='my-4 mb-6 flex flex-col'>
+          <label htmlFor='avatar' className='mb-2 block text-lg font-semibold'>
+            Avatar:
+          </label>
+          <input
+            type='file'
+            id='updateProfilePicture'
+            accept='image/*'
+            className='w-[520px]'
+            {...register('updateProfilePicture')}
+          />
+          {errors.updateProfilePicture != null && (
+            <span className='ml-3 text-sm font-semibold text-red-600'>
+              {errors.updateProfilePicture?.message ?? 'This field is required'}
+            </span>
+          )}
+        </div>
+
         <button
           type='submit'
-          className='rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'
+          className='mb-8 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'
         >
-          Save
+          {isSubmitting ? <LoadingIcon /> : 'Save Changes'}
         </button>
       </form>
-      <div className='mb-20 mt-8'>
-        <label htmlFor='avatar' className='mb-2 block text-lg font-semibold'>
-          Avatar:
-        </label>
-        <input
-          type='file'
-          id='avatar'
-          accept='image/*'
-          // {...register('avatar')}
-          className='w-[520px]'
-        />
-      </div>
     </div>
   )
 }
