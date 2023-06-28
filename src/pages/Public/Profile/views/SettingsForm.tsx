@@ -11,7 +11,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { SettingsFormInput } from '.'
+import { SettingsFormInput } from '../components'
 
 interface SettingsProps {
   user: IUser
@@ -75,7 +75,10 @@ export const SettingsForm: React.FC<SettingsProps> = ({ user }) => {
 
   return (
     <div className='relative h-auto w-full'>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='mb-4 w-[555px] rounded border border-gray-300 bg-gray-100 p-4'
+      >
         <SettingsFormInput
           label='Name'
           name='updateName'
@@ -131,7 +134,10 @@ export const SettingsForm: React.FC<SettingsProps> = ({ user }) => {
         />
 
         <div className='mb-4 flex flex-col'>
-          <label htmlFor='shortDescription' className='mb-2 block'>
+          <label
+            htmlFor='shortDescription'
+            className='mb-2 block text-lg font-bold text-gray-500'
+          >
             Short Description:
           </label>
           <textarea

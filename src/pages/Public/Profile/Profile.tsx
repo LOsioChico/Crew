@@ -4,6 +4,7 @@ import { useUserIdStore } from '@/store'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { About, Contributions, SettingsForm, UserProjectsFav } from './views'
+import { MenuItem } from './components'
 
 enum UserMenuOptions {
   Profile = 'Profile',
@@ -51,64 +52,26 @@ export const Profile: React.FC = () => {
           </div>
         </div>
         <div className='mt-5 flex items-start justify-start'>
-          <div className='flex-none'>
-            <p
-              className={`mr-10 text-2xl duration-300 ease-in-out ${
-                userMenu === UserMenuOptions.Profile
-                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
-              }`}
-              onClick={() => {
-                handleOnClick(UserMenuOptions.Profile)
-              }}
-            >
-              {UserMenuOptions.Profile}
-            </p>
-          </div>
-          <div className='flex-none'>
-            <p
-              className={`mr-10 text-2xl duration-300 ease-in-out ${
-                userMenu === UserMenuOptions.Projects
-                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
-              }`}
-              onClick={() => {
-                handleOnClick(UserMenuOptions.Projects)
-              }}
-            >
-              {UserMenuOptions.Projects}
-            </p>{' '}
-          </div>
-          <div className='flex-none'>
-            <p
-              className={`mr-10 text-2xl duration-300 ease-in-out ${
-                userMenu === UserMenuOptions.Contributions
-                  ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
-                  : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
-              }`}
-              onClick={() => {
-                handleOnClick(UserMenuOptions.Contributions)
-              }}
-            >
-              {UserMenuOptions.Contributions}
-            </p>{' '}
-          </div>
-          {id === userId && (
-            <div className='flex-none'>
-              <p
-                className={`mr-10 text-2xl duration-300 ease-in-out ${
-                  userMenu === UserMenuOptions.Settings
-                    ? 'cursor-default font-extrabold text-secondaryDark underline underline-offset-8'
-                    : 'cursor-pointer hover:scale-110 hover:font-semibold hover:text-secondary active:scale-95 '
-                }`}
-                onClick={() => {
-                  handleOnClick(UserMenuOptions.Settings)
-                }}
-              >
-                {UserMenuOptions.Settings}
-              </p>{' '}
-            </div>
-          )}
+          <MenuItem
+            menuOption={UserMenuOptions.Profile}
+            currentOption={userMenu}
+            onClick={handleOnClick}
+          />
+          <MenuItem
+            menuOption={UserMenuOptions.Projects}
+            currentOption={userMenu}
+            onClick={handleOnClick}
+          />
+          <MenuItem
+            menuOption={UserMenuOptions.Contributions}
+            currentOption={userMenu}
+            onClick={handleOnClick}
+          />
+          <MenuItem
+            menuOption={UserMenuOptions.Settings}
+            currentOption={userMenu}
+            onClick={handleOnClick}
+          />
         </div>
         <hr className='my-3 border border-primary' />
         {userMenu === UserMenuOptions.Profile && <About user={user} />}
