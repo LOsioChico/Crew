@@ -1,20 +1,21 @@
-// const sections = ['User', 'Project', 'Resume']
 import { useState } from 'react'
-import { DashboardItem } from './dashboardItem'
+import { DashboardItem } from './components'
+import { ProjectsDashboard, UsersDashboard, ResumeDashboard } from './views'
 
-enum DashboardMenuOptions {
-  User = 'User',
-  Project = 'Project',
+export enum DashboardMenuOptions {
   Resume = 'Resume',
+  Contributions = 'Contributions',
+  Users = 'Users',
+  Projects = 'Projects',
 }
 export const Dashboard: React.FC = () => {
   const [dashboardMenu, setDashboardMenu] = useState<DashboardMenuOptions>(
-    DashboardMenuOptions.User
+    DashboardMenuOptions.Users
   )
   const handleOnClick = (option: DashboardMenuOptions): void => {
     setDashboardMenu(option)
   }
-
+  // ayudame con el codigo de arriba?
   return (
     <div>
       <div id='Main container' className='flex bg-backgroundDark2 p-5'>
@@ -25,17 +26,22 @@ export const Dashboard: React.FC = () => {
           <h2 className='mb-4 text-xl'>Sections</h2>
           <ul>
             <DashboardItem
-              menuOption={DashboardMenuOptions.User}
-              currentOption={dashboardMenu}
-              onClick={handleOnClick}
-            />
-            <DashboardItem
-              menuOption={DashboardMenuOptions.Project}
-              currentOption={dashboardMenu}
-              onClick={handleOnClick}
-            />
-            <DashboardItem
               menuOption={DashboardMenuOptions.Resume}
+              currentOption={dashboardMenu}
+              onClick={handleOnClick}
+            />
+            <DashboardItem
+              menuOption={DashboardMenuOptions.Contributions}
+              currentOption={dashboardMenu}
+              onClick={handleOnClick}
+            />{' '}
+            <DashboardItem
+              menuOption={DashboardMenuOptions.Users}
+              currentOption={dashboardMenu}
+              onClick={handleOnClick}
+            />
+            <DashboardItem
+              menuOption={DashboardMenuOptions.Projects}
               currentOption={dashboardMenu}
               onClick={handleOnClick}
             />
@@ -44,9 +50,13 @@ export const Dashboard: React.FC = () => {
         <div className='h-screen border border-secondary'></div>
         <div
           id='section container'
-          className='h-screen w-full rounded-r-xl bg-backgroundDark3 pl-10'
+          className='h-screen w-full rounded-r-xl bg-backgroundDark3 p-5'
         >
-          <h1>Section Container</h1>
+          {dashboardMenu === DashboardMenuOptions.Users && <UsersDashboard />}
+          {dashboardMenu === DashboardMenuOptions.Projects && (
+            <ProjectsDashboard />
+          )}
+          {dashboardMenu === DashboardMenuOptions.Resume && <ResumeDashboard />}
         </div>
       </div>
     </div>
