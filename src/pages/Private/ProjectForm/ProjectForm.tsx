@@ -92,6 +92,25 @@ export const ProjectForm: React.FC = () => {
           options={['Argentina']}
         />
 
+        <div className='my-4 mb-6 flex flex-col'>
+          <label htmlFor='Images' className='mb-2 block text-lg font-semibold'>
+            Images:
+          </label>
+          <input
+            type='file'
+            id='updateProjectPicture'
+            accept='image/*'
+            className='w-[520px]'
+            multiple
+            {...register('updateProjectPicture')}
+          />
+          {errors.updateProjectPicture != null && (
+            <span className='ml-3 text-sm font-semibold text-red-600'>
+              {errors.updateProjectPicture?.message ?? 'This field is required'}
+            </span>
+          )}
+        </div>
+
         <button
           type='submit'
           className='bg-primary-500 mx-auto block rounded bg-primary px-4 py-2 font-bold text-white duration-300 hover:bg-secondaryDark active:scale-95'
