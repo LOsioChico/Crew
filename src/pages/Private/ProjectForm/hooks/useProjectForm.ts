@@ -26,12 +26,32 @@ export const useProjectForm = (): IProjectForm => {
   const onSubmit = async (data: ProjectFormType): Promise<void> => {
     try {
       const { data: projectId } = await CrewApi.post<{ message: string }>(
-        '/projectRoute',
+        '/projectRoute/superProject',
         {
           ...data,
+          fundingGoal: data.fundingGoal.toString(),
+          fundingDayLeft: data.fundingDayLeft.toString(),
           creatorId: userId,
         }
       )
+      if (data.updateProjectPicture.length !== 0) {
+        // OBJETO --> ARRAY
+        const selectedFiles = Array.from(data.updateProjectPicture)
+
+        // CLASE FORM DATA, le da las propiedades a la constante files
+        const files = new FormData()
+
+        // Itero el array
+        selectedFiles.forEach((file) => {
+          files.append('files', file)
+        })
+
+        // SUBO
+        await fetch('http://localhost:3001/projectRoute/superImage', {
+          method: 'POST',
+          body: files,
+        })
+      }
       if (projectId.message === undefined) return
       navigate(`${PublicRoutes.projects}/${projectId.message}`)
     } catch (error) {

@@ -29,6 +29,16 @@ export const ProjectValidation = z.object({
   location: z.enum(['Argentina'], {
     required_error: 'Debes seleccionar una ubicación',
   }),
+  updateProjectPicture: z.custom<File[]>(
+    (files) => {
+      if (files instanceof FileList) {
+        return files
+      }
+    },
+    {
+      message: 'Debe proporcionar una imagen',
+    }
+  ),
 })
 
 export type ProjectFormType = z.infer<typeof ProjectValidation>
