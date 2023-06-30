@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { DashboardItem } from './components'
-import { ProjectsDashboard, UsersDashboard, ResumeDashboard } from './views'
+import {
+  ProjectsDashboard,
+  UsersDashboard,
+  ResumeDashboard,
+  ContributionsDashboard,
+} from './views'
 
 export enum DashboardMenuOptions {
   Resume = 'Resume',
@@ -10,7 +15,7 @@ export enum DashboardMenuOptions {
 }
 export const Dashboard: React.FC = () => {
   const [dashboardMenu, setDashboardMenu] = useState<DashboardMenuOptions>(
-    DashboardMenuOptions.Users
+    DashboardMenuOptions.Resume
   )
   const handleOnClick = (option: DashboardMenuOptions): void => {
     setDashboardMenu(option)
@@ -52,11 +57,14 @@ export const Dashboard: React.FC = () => {
           id='section container'
           className='h-screen w-full rounded-r-xl bg-backgroundDark3 p-5'
         >
+          {dashboardMenu === DashboardMenuOptions.Resume && <ResumeDashboard />}
+          {dashboardMenu === DashboardMenuOptions.Contributions && (
+            <ContributionsDashboard />
+          )}
           {dashboardMenu === DashboardMenuOptions.Users && <UsersDashboard />}
           {dashboardMenu === DashboardMenuOptions.Projects && (
             <ProjectsDashboard />
           )}
-          {dashboardMenu === DashboardMenuOptions.Resume && <ResumeDashboard />}
         </div>
       </div>
     </div>
