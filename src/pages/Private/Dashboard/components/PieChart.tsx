@@ -23,9 +23,9 @@ export const PieChart: React.FC<PieProps> = ({
       {
         label: title,
         data,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         borderColor: backgroundColor,
-        borderWidth: 1,
+        borderWidth: 0,
       },
     ],
   }

@@ -20,7 +20,7 @@ export const Dashboard: React.FC = () => {
   const handleOnClick = (option: DashboardMenuOptions): void => {
     setDashboardMenu(option)
   }
-  // ayudame con el codigo de arriba?
+
   return (
     <div>
       <div id='Main container' className='flex bg-backgroundDark2 p-5'>

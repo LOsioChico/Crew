@@ -1,15 +1,31 @@
 import { PieChart } from '../components/PieChart'
 import { SelectDash } from '../components/SelectDash'
-import PaidIcon from '@mui/icons-material/Paid'
+import BuildIcon from '@mui/icons-material/Build'
+import LocalAtmIcon from '@mui/icons-material/LocalAtm'
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
+import { useDashboardMainInfo } from '../hooks/useDashboardMainInfo'
 export const ResumeDashboard: React.FC = () => {
-  const title = 'Resumeeee'
+  const title = 'Funds ($)'
   const arrColor = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
+    'rgba(193, 52, 82, 0.5)',
+    'rgba(20, 146, 200, 0.5)',
+    'rgba(86, 191, 73, 0.5)',
   ]
-  const data = [50, 19, 3]
+  const { mainInfo } = useDashboardMainInfo()
+  const fundCommunty =
+    mainInfo?.chartTotalFundsRaised.fundingCurrentCommunityCategory ?? 0
+  const fundCreative =
+    mainInfo?.chartTotalFundsRaised.fundingCurrentCommunityCategory ?? 0
+  const fundTech =
+    mainInfo?.chartTotalFundsRaised.fundingCurrentCommunityCategory ?? 0
+  const data = [fundTech * 5, fundCreative * 2, fundCommunty / 2]
 
+  const funds =
+    mainInfo?.totalFundsRaised != null
+      ? Math.floor(mainInfo.totalFundsRaised / 1000)
+      : 0
+  const usersN = mainInfo?.allRegisteredUsers
+  const projectsN = mainInfo?.activeProjects
   return (
     <div className='flex'>
       <div className='h-fit w-[495px] rounded-lg bg-backgroundDark1 p-3 '>
@@ -20,19 +36,26 @@ export const ResumeDashboard: React.FC = () => {
           </div>
           <SelectDash />
         </div>
-        <div id='Contenedor' className='flex w-full justify-between'>
-          <div className='h-[310px] w-[310px] rounded-lg bg-backgroundDark3 p-10'>
-            <PaidIcon />
-            <h1>Total Fund</h1>
+        <div id='Contenedor' className='flex w-full justify-between text-white'>
+          <div className='h-[310px] w-[310px] rounded-lg bg-backgroundDark3 p-5'>
+            <LocalAtmIcon style={{ fontSize: 100, color: '#38b000' }} />
+            <div className='pl-2.5'>
+              <h1>Total Contributions</h1>
+              <h1 className='text-xl'>
+                $ {funds.toLocaleString(undefined, { useGrouping: true })} K
+              </h1>
+            </div>
           </div>
           <div>
             <div className='mb-2.5 h-[150px] w-[150px] rounded-lg bg-backgroundDark3 p-6'>
-              <PaidIcon />
+              <BuildIcon style={{ fontSize: 40, color: '#ff9410' }} />
               <h1>Total Projects</h1>
+              <h1 className='text-xl'>{projectsN}</h1>
             </div>
             <div className='h-[150px] w-[150px] rounded-lg bg-backgroundDark3 p-6'>
-              <PaidIcon />
+              <PeopleOutlineIcon style={{ fontSize: 40, color: '#3a86ff' }} />
               <h1>Total Users</h1>
+              <h1 className='text-xl'>{usersN}</h1>
             </div>
           </div>
         </div>

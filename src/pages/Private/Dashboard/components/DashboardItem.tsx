@@ -2,6 +2,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined'
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined'
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded'
+
 import { DashboardMenuOptions } from '../Dashboard'
 
 export interface DashboardItemProps {
@@ -29,16 +30,16 @@ export const DashboardItem: React.FC<DashboardItemProps> = ({
       >
         <div className='flex items-center align-text-top'>
           {menuOption === DashboardMenuOptions.Resume && (
-            <PersonOutlineOutlinedIcon className='mr-2' />
+            <TrendingUpOutlinedIcon className='mr-2' />
           )}
           {menuOption === DashboardMenuOptions.Contributions && (
             <MonetizationOnRoundedIcon className='mr-2 text-[#70e000]' />
           )}
           {menuOption === DashboardMenuOptions.Users && (
-            <RocketLaunchOutlinedIcon className='mr-2' />
+            <PersonOutlineOutlinedIcon className='mr-2' />
           )}
           {menuOption === DashboardMenuOptions.Projects && (
-            <TrendingUpOutlinedIcon className='mr-2' />
+            <RocketLaunchOutlinedIcon className='mr-2' />
           )}
           <span className={'pt-0.5'}>{menuOption}</span>
         </div>
