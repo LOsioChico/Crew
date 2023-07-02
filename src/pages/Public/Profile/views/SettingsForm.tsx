@@ -124,15 +124,25 @@ export const SettingsForm: React.FC<SettingsProps> = ({ user }) => {
           error={errors.updateCity}
         />
 
-        <SettingsFormInput
-          label='About Me'
-          name='updateAboutMe'
-          type='text'
-          placeholder='Tell something about your self'
-          register={register}
-          error={errors.updateAboutMe}
-        />
-
+        <div className='mb-4 flex flex-col'>
+          <label
+            htmlFor='About Me'
+            className='mb-2 block text-lg font-bold text-gray-500'
+          >
+            About Me:
+          </label>
+          <textarea
+            id='aboutMe'
+            placeholder='Tell something about your self'
+            {...register('updateAboutMe')}
+            className='h-30 w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
+          />
+          {errors.updateAboutMe != null && (
+            <span className='ml-3 text-sm font-semibold text-red-600'>
+              {errors.updateAboutMe?.message ?? 'This field is required'}
+            </span>
+          )}
+        </div>
         <div className='mb-4 flex flex-col'>
           <label
             htmlFor='shortDescription'
@@ -144,7 +154,7 @@ export const SettingsForm: React.FC<SettingsProps> = ({ user }) => {
             id='shortDescription'
             placeholder='Tell something about your self'
             {...register('updateShortDescription')}
-            className='h-20 w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
+            className='h-30 w-[520px] rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none'
           />
           {errors.updateShortDescription != null && (
             <span className='ml-3 text-sm font-semibold text-red-600'>

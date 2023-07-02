@@ -30,11 +30,11 @@ export const UserValidation = z.object({
   updateAboutMe: z
     .string()
     .min(10, 'La descripción debe tener al menos 10 caracteres')
-    .max(100, 'La descripción debe tener menos de 100 caracteres'),
+    .max(500, 'La descripción debe tener menos de 500 caracteres'),
   updateShortDescription: z
     .string()
     .min(3, 'La descripción corta debe tener al menos 3 caracteres')
-    .max(100, 'La descripción corta debe tener menos de 40 caracteres'),
+    .max(150, 'La descripción corta debe tener menos de 150 caracteres'),
   updateProfilePicture: z.custom<File[]>(
     (files) => {
       if (files instanceof FileList) {
