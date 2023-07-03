@@ -1,12 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Footer, NavBar } from '.'
 
 export const Layout: React.FC = () => {
+  const location = useLocation()
+  console.log(location)
+
   return (
     <>
       <NavBar />
       <Outlet />
-      <Footer />
+      {location.pathname !== '/dashboard' && <Footer />}
     </>
   )
 }
