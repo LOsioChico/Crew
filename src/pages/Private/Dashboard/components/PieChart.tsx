@@ -29,9 +29,22 @@ export const PieChart: React.FC<PieProps> = ({
       },
     ],
   }
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: '#adb5bd',
+          font: {
+            size: 16,
+          },
+        },
+      },
+    },
+  }
+
   return (
     <div className={`flex h-auto ${width}`}>
-      <Pie data={info} />
+      <Pie data={info} options={options} />
     </div>
   )
 }

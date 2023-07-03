@@ -1,4 +1,4 @@
-import { LineChart } from '../components/LineChart'
+import { LineChart } from '../components'
 import { useDashboardMainInfo } from '../hooks/useDashboardMainInfo'
 // import { type IDashboardMainInfo } from '@/interfaces'
 
@@ -136,7 +136,7 @@ export const ProjectsDashboard: React.FC = () => {
 
   return (
     <div className='ml-10 flex flex-col'>
-      <h2 className='mb-8 ml-40 items-center justify-center pl-20 pt-10 text-3xl text-secondary'>
+      <h2 className='mb-8 ml-48 items-center justify-center pl-20 pt-10 text-3xl text-secondary'>
         Projects Dashboard
       </h2>
       <div className='w-[500px]'>
@@ -145,6 +145,7 @@ export const ProjectsDashboard: React.FC = () => {
           data={allData}
           width={'w-[800px]'}
           fontSize={20}
+          showLabels={true}
         />
       </div>
     </div>

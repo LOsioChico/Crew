@@ -1,3 +1,4 @@
+import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-import { Line } from 'react-chartjs-2'
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,6 +25,7 @@ interface LineProps {
   data: number[][]
   width: string
   fontSize: number
+  showLabels: boolean
 }
 
 export const LineChart: React.FC<LineProps> = ({
@@ -31,6 +33,7 @@ export const LineChart: React.FC<LineProps> = ({
   data,
   width,
   fontSize,
+  showLabels,
 }) => {
   const labelsMonth = [
     'January',
@@ -42,37 +45,49 @@ export const LineChart: React.FC<LineProps> = ({
     'July',
   ]
 
+  let datasetsData
+  if (Array.isArray(data) && data.length === 1 && Array.isArray(data[0])) {
+    datasetsData = [data[0]]
+  } else {
+    datasetsData = data
+  }
+
   const dataLine = {
     labels: labelsMonth,
-    datasets: [
-      {
-        label: 'Community Projects',
-        data: data[0],
-        borderColor: 'rgba(86, 191, 73)',
-        backgroundColor: 'rgba(86, 191, 73)',
+    datasets: datasetsData.map((dataArray, index) => {
+      let label, borderColor, backgroundColor
+      if (index === 0) {
+        label = datasetsData.length === 1 ? 'Users' : 'Community Projects'
+        borderColor =
+          datasetsData.length === 1 ? '#3a86ff' : 'rgba(86, 191, 73)'
+        backgroundColor =
+          datasetsData.length === 1 ? '#3a86ff' : 'rgba(86, 191, 73)'
+      } else if (index === 1) {
+        label = 'Creative Works'
+        borderColor = 'rgba(20, 146, 200)'
+        backgroundColor = 'rgba(20, 146, 200)'
+      } else if (index === 2) {
+        label = 'Tech & Innovation'
+        borderColor = 'rgba(193, 52, 82)'
+        backgroundColor = 'rgba(193, 52, 82)'
+      }
+
+      return {
+        data: dataArray,
         fill: false,
-      },
-      {
-        label: 'Creative Works',
-        data: data[1],
-        borderColor: 'rgba(20, 146, 200)',
-        backgroundColor: 'rgba(20, 146, 200)',
-        fill: false,
-      },
-      {
-        label: 'Tech & Innovation',
-        data: data[2],
-        borderColor: 'rgba(193, 52, 82)',
-        backgroundColor: 'rgba(193, 52, 82)',
-        fill: false,
-      },
-    ],
+        tension: 0,
+        label,
+        borderColor,
+        backgroundColor,
+      }
+    }),
   }
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        display: showLabels,
         position: 'bottom' as const,
         labels: {
           font: {
@@ -96,7 +111,7 @@ export const LineChart: React.FC<LineProps> = ({
         },
       },
       y: {
-        display: true,
+        display: showLabels,
         grid: {
           color: 'rgb(73, 80, 87, 0.25)',
         },

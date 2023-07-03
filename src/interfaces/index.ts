@@ -3,6 +3,7 @@ export * from './Comment';
 export * from './DashboarMainInfo';
 export * from './Project';
 export * from './User';
+export * from './allUsers';
 export * from './index';
 export * from './loginForm';
 export * from './registerForm';

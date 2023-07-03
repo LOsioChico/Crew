@@ -1,4 +1,4 @@
-import { LineChart } from '../components/LineChart'
+import { LineChart } from '../components'
 import { useDashboardMainInfo } from '../hooks/useDashboardMainInfo'
 export const ContributionsDashboard: React.FC = () => {
   const { mainInfo } = useDashboardMainInfo()
@@ -113,6 +113,7 @@ export const ContributionsDashboard: React.FC = () => {
           data={allData}
           width={'w-[800px]'}
           fontSize={20}
+          showLabels={true}
         />
       </div>
     </div>
