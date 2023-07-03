@@ -1,12 +1,37 @@
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js'
 import { Line } from 'react-chartjs-2'
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 interface LineProps {
   title: string
   data: number[][]
   width: string
+  fontSize: number
 }
 
-export const LineChart: React.FC<LineProps> = ({ title, data, width }) => {
+export const LineChart: React.FC<LineProps> = ({
+  title,
+  data,
+  width,
+  fontSize,
+}) => {
   const labelsMonth = [
     'January',
     'February',
@@ -48,19 +73,33 @@ export const LineChart: React.FC<LineProps> = ({ title, data, width }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'bottom' as const,
+        labels: {
+          font: {
+            weight: 'bold',
+            size: fontSize,
+            padding: 30,
+          },
+        },
       },
       title: {
-        display: true,
+        display: false,
         text: title,
+        position: 'bottom' as const,
       },
     },
     scales: {
       x: {
         display: true,
+        grid: {
+          color: 'rgb(73, 80, 87, 0.25)',
+        },
       },
       y: {
         display: true,
+        grid: {
+          color: 'rgb(73, 80, 87, 0.25)',
+        },
       },
     },
   }

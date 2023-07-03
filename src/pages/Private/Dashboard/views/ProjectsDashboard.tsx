@@ -131,16 +131,21 @@ export const ProjectsDashboard: React.FC = () => {
     julyTech,
   ]
 
-  const title = 'Projects per month'
+  const title = 'Projects per month [Un]'
   const allData = [dataCom, dataCrea, dataTech]
 
   return (
     <div className='ml-10 flex flex-col'>
-      <h2 className='mb-8 items-center justify-center pl-20 pt-10 text-3xl text-secondary'>
+      <h2 className='mb-8 ml-40 items-center justify-center pl-20 pt-10 text-3xl text-secondary'>
         Projects Dashboard
       </h2>
       <div className='w-[500px]'>
-        <LineChart title={title} data={allData} width={'w-[400px]'} />
+        <LineChart
+          title={title}
+          data={allData}
+          width={'w-[800px]'}
+          fontSize={20}
+        />
       </div>
     </div>
   )
